@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "bootstrap-icons": "^1.10.3",
+    "sass": "^1.60.0"
+  },
+  "name": "seowebsite",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/webdriverio": "^5.0.0",
+    "@wdio/browser-runner": "^8.6.9",
+    "@wdio/cli": "^8.6.9",
+    "@wdio/mocha-framework": "^8.6.8",
+    "@wdio/spec-reporter": "^8.6.8",
+    "chromedriver": "^111.0.0",
+    "wdio-chromedriver-service": "^8.1.1"
+  },
+  "scripts": {
+    "test": "wdio",
+    "wdio": "wdio run ./wdio.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anh96/SEOWebsite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anh96/SEOWebsite/issues"
+  },
+  "homepage": "https://github.com/Anh96/SEOWebsite#readme",
+  "description": ""
+}

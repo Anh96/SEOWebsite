@@ -1,0 +1,203 @@
+$primary: #2124B1;
+$secondary: #4777F5;
+$light: #F7FAFF;
+$dark: hsl(240, 15%, 13%);
+/* Option 2: Import via CSS */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+// mixins
+@mixin font-size($fsize) {
+    font-size: $fsize;
+}
+@mixin font-weight($fweight){
+    font-weight: $fweight;
+}
+@mixin color($color){
+    color: $color;
+}
+@mixin font($fsize, $fweight, $color){
+    @include font-size($fsize);
+    @include font-weight($fweight);
+    @include color($color);
+}
+@mixin text-transform($text){
+    text-transform: $text;
+}
+@mixin size($width, $height){
+    width: $width;
+    height: $height;
+}
+@mixin padding($top, $bottom, $left, $right){
+    padding: $top $right $bottom $left;
+}
+@mixin margin($top, $bottom, $left, $right){
+    margin: $top $right $bottom $left;
+}
+@mixin background($bg-size, $bg-repeat){
+    background-size: $bg-size;
+    background-repeat: $bg-repeat;
+}
+// flex attributes mixins
+@mixin justify-content($jtf-content){
+    justify-content: $jtf-content;
+}
+@mixin align-item($alig-item){
+    align-items: center;
+}
+@mixin flex__center-items($align-item, $jt-content){
+    display: flex;
+    @include align-item($align-item);
+    @include justify-content($jt-content);
+}
+@mixin absolute($position: $p){
+    position: absolute;
+    $position: $p;
+}
+@mixin fixed($top, $left, $bottom, $right, $zindex) {
+    position: fixed;
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+    z-index: $zindex;
+    transform:  translateZ(0);
+
+}
+// reset project
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    line-height: 1.2rem;
+    a{
+        text-decoration: none;
+    }
+    li{
+        list-style-type: none;
+    }
+}
+body{
+    overflow: hidden;
+    background-color: $light;
+}
+.tab-active{
+    color: $secondary;
+    border-bottom: 1px solid $secondary;
+}
+.bg-primary{
+    background-color: $primary;
+}
+.container{
+    position: relative;
+    background-color: white;
+    .block__header-section{
+        .header-section__header-top{
+            @include size(inherit, fit-content);
+            @include flex__center-items(center, -content);
+            @include fixed(0px, 0px, 0px, 0px, 99 );
+            justify-content: space-between;
+            border-bottom: 0.2px solid $light;
+            .header-top__logo{
+                @include size(20%, auto);
+                @include margin(0px, 5px, 0px, 5px);
+                @include flex__center-items(center, -content);
+                .logo__search-icon{
+                    @include font(50px,500, $dark);
+                }
+                .logo__name{
+                    @include flex__center-items(center, -content);
+                    div{
+                        &:nth-child(2n+1){
+                            @include font(50px,500, $dark);
+                            @include text-transform(uppercase);
+                        }
+                        &:nth-child(2n+2){
+                            @include text-transform(capitalize);
+                        }
+                    }
+                }
+            }
+            .header-top__navbar{
+                @include size(80%, auto);
+                .navbar-list{
+                    @include justify-content(center);
+                    @include size(100%, auto);
+                    display: flex;
+                    .navbar-list__item{
+                        @include flex__center-items(center, center);
+                        @include margin(0px, 4px , 0px, 2px);
+                        @include size(calc(100%/6), auto);
+                        @include font-size(20px);
+                        @include text-transform(capitalize);
+                        cursor: pointer;
+                        &:nth-child(6n+6){
+                            display: block !important;
+                            position: relative;
+                            div{
+                                &:nth-child(2n+1){
+                                    @include flex__center-items(center, -content);
+                                    @include size(100%, inherit);
+                                    @include padding(10px, 10px, 10px, 10px);
+                                }
+                            }
+                            .sub-menu{
+                                @include size(100%, 120px);
+                                @include align-item(center);
+                                @include padding(10px, 10px, 10px, 10px);
+                                position: absolute;
+                                display: none;
+                                background-color: white;
+                                top: 50px;
+                                .sub-menu__item{
+                                    @include size(100%, calc(100%/3));
+                                    display: block;
+                                    &:nth-child(3n+2){
+                                        margin: 5px 0px;
+                                    }
+                                    &:hover{
+                                        @include color($secondary);
+                                    }
+                                }
+                            }
+                            &:hover{
+                                .sub-menu{
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                }
+            }   
+        }
+        .header-section__header-bg{
+            @include size(100%, 700px);
+            .header-bg__bg{
+                @include size(100%, 100%);
+                background:
+                        url(../imgs/bg-dot.png),
+                        url(../imgs/bg-dot.png),
+                        url(../imgs/bg-round.png),
+                        url(../imgs/bg-tree.png),
+                        url(../imgs/bg-bottom-hero.png);
+                background-position: 10px 10px,
+                                    bottom 190px right 10px,
+                                    left 55% top -1px,
+                                    left 45% bottom -1px,
+                                    center bottom -1px;
+
+                ;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+}
+@media screen and (min-width:1280px){
+    .container{
+        max-width: 1200px;
+        margin: 0 auto;
+        .header-section__header-top{
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0px 20px;
+        }
+    }
+}
