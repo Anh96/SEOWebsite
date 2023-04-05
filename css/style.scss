@@ -2,9 +2,12 @@ $primary: #2124B1;
 $secondary: #4777F5;
 $light: #F7FAFF;
 $dark: hsl(240, 15%, 13%);
+$padding-x: 24px;
+$margin-y: 48px;
 /* Option 2: Import via CSS */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 // mixins
+// fonts
 @mixin font-size($fsize) {
     font-size: $fsize;
 }
@@ -22,19 +25,28 @@ $dark: hsl(240, 15%, 13%);
 @mixin text-transform($text){
     text-transform: $text;
 }
+// size
 @mixin size($width, $height){
     width: $width;
     height: $height;
 }
+// padding - margin
 @mixin padding($top, $bottom, $left, $right){
     padding: $top $right $bottom $left;
 }
 @mixin margin($top, $bottom, $left, $right){
     margin: $top $right $bottom $left;
 }
+// background
 @mixin background($bg-size, $bg-repeat){
     background-size: $bg-size;
     background-repeat: $bg-repeat;
+}
+// border
+@mixin border($bdSize, $bdstyle, $bdColor, $bdBackground, $bdRadius){
+    border: $bdSize $bdstyle $bdColor;
+    background-color: $bdBackground;
+    border-radius: $bdRadius;
 }
 // flex attributes mixins
 @mixin justify-content($jtf-content){
@@ -48,10 +60,6 @@ $dark: hsl(240, 15%, 13%);
     @include align-item($align-item);
     @include justify-content($jt-content);
 }
-@mixin absolute($position: $p){
-    position: absolute;
-    $position: $p;
-}
 @mixin fixed($top, $left, $bottom, $right, $zindex) {
     position: fixed;
     top: $top;
@@ -62,21 +70,42 @@ $dark: hsl(240, 15%, 13%);
     transform:  translateZ(0);
 
 }
+// absolute
+@mixin absolute($top, $bottom, $left, $right){
+    position: abolute;
+    top: $top;
+    bottom: $bottom;
+    left: $left;
+    right: $right;
+}
+// Pseudo
+@mixin pseudo($top, $bottom, $left, $right, $bgColor){
+    content: "";
+    display: block;
+    position: absolute;
+    top: $top;
+    bottom: $bottom;
+    left: $left;
+    right: $right;
+    background-color: $bgColor;
+}
 // reset project
 *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    line-height: 1.2rem;
     a{
         text-decoration: none;
     }
     li{
         list-style-type: none;
     }
+    i{
+        @include font(15px, normal, $primary);
+    }
 }
 body{
-    overflow: hidden;
+    // overflow: hidden;
     background-color: $light;
 }
 .tab-active{
@@ -86,6 +115,27 @@ body{
 .bg-primary{
     background-color: $primary;
 }
+.bg-white{
+    background-color: white;
+}
+.row-fluid{
+    width: 100%;
+}
+.coll-half{
+    @include size(50%, auto);
+}
+.block-flex{
+    @include flex__center-items(center, -content)
+}
+.txt-white{
+    @include font(auto, auto, white);
+}
+.button{
+    cursor: pointer;
+    border: 0px;
+    background-color: unset;
+}
+// set style
 .container{
     position: relative;
     background-color: white;
@@ -100,8 +150,8 @@ body{
                 @include size(20%, auto);
                 @include margin(0px, 5px, 0px, 5px);
                 @include flex__center-items(center, -content);
-                .logo__search-icon{
-                    @include font(50px,500, $dark);
+                .logo__search-icon i{
+                    @include font(50px,500, white);
                 }
                 .logo__name{
                     @include flex__center-items(center, -content);
@@ -137,6 +187,9 @@ body{
                                     @include flex__center-items(center, -content);
                                     @include size(100%, inherit);
                                     @include padding(10px, 10px, 10px, 10px);
+                                    i{
+                                        @include color(white);
+                                    }
                                 }
                             }
                             .sub-menu{
@@ -188,6 +241,181 @@ body{
                 background-repeat: no-repeat;
             }
         }
+        .block-header__header-content{
+            @include color(white);
+            position: absolute;
+            top: 100px;
+            .coll-half{
+                &:nth-child(2n+1){
+                    @include padding(0px, 0px, $padding-x, $padding-x);
+                }
+                .content-heading{
+                    @include font-size(50px);
+                }
+                .content-desc{
+                    @include margin(10px, 10px, 0px, 0px);
+                }
+                .buttons-group{
+                    .button{
+                        @include size(120px, 40px);
+                        @include border(1px, solid, white, unset, 10px);
+                        @include color(white);
+                        @include font-size(20px);
+                        &:nth-child(2n+1){
+                            @include color($dark);
+                            background-color: white;
+                        }
+                        &:nth-child(2n+2){
+                            @include margin(0px, 0px, 40px, 40px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .block__block-main-content{
+        .block-main-content__about-us{
+            @include padding(0px, 0px, $padding-x, $padding-x);
+            .coll--left{
+                position: relative;
+                .content-heading{
+                    @include font(20px, 500, $primary);
+                    @include size(100%, 50px);
+                    position: relative;
+                    span{
+                        position: absolute;
+                        left: 30px;
+                    }
+                    &:before{
+                        @include size(15px, 15px);
+                        @include pseudo(5px, 0px,0px, 0px, $primary);
+                        opacity: 0.8;
+                    }
+                    &::after{
+                        @include size(15px, 15px);
+                        @include pseudo(-10%, 0px, 5px, 0px, $secondary);
+                        opacity: 0.3;
+                    }
+                }
+                .cxA1{
+                    @include size(100%, 80%);
+                    position: absolute;
+                    top: 30px;
+                    .about-us__reason{
+                        @include margin(20px, 20px, 0px, 0px);
+                    }
+                    .rsCus{
+                        @include font-size(20px);
+                        .icon{
+                            margin-right: 10px;
+                        }
+                    }
+                    .buttons-group{
+                        @include flex__center-items(center, -content);
+                        @include margin(20px, 0px, 0px, 0px);
+                        justify-content: space-between;
+                        .button__read-more{
+                            @include size(100px, 40px);
+                            @include border(1px, solid, white, $primary, 10px);
+                            @include font(20px, 400, white);
+                        }
+                        .button__instagram,
+                        .button__facebook,
+                        .button__twister{
+                            @include size(40px, 40px);
+                            @include border(1px, solid, $primary, white, 50%);
+                            @include flex__center-items(center, center);
+                            &:hover{
+                                background-color: $primary;
+                                i{
+                                    @include color(white);
+                                }
+                            }
+                        }
+                    }
+                }
+            }    
+        }
+        .block-main-content__send-box{
+            @include margin($margin-y, 0px, 0px, 0px);
+            .newsletter{
+                @include padding(0px, 0px, $padding-x, $padding-x);
+                position: relative;
+                .coll--left{
+                    .txt-white{
+                        &:nth-child(2n+1){
+                            @include font-size(30px);
+                        }
+                    }
+                    // input email
+                    .send-box{
+                        @include padding(0px, 0px, 0px, 0px);
+                        @include border(1px, solid, $light, $light, 30px);
+                        height: 50px;
+                        input{
+                            @include size(90%, inherit);
+                            @include padding(10px, 10px, 10px, 10px);
+                            @include border(1px, solid, $light, $light, 30px);
+                            @include font(15px, normal, $light);
+                            background: inherit;
+                            border: 0px;
+                        }
+                    }
+                }
+                .coll--right{
+                    position: absolute;
+                    top: 50%;
+                    right: 0px;
+                }
+                .send-box__bg{
+                    width: 100%;
+                    height: inherit;
+                    background: 
+                                url("../imgs/bg-top.png"),
+                                url("../imgs/bg-bottom.png");
+                    background-position: 
+                                        left top,
+                                        right bottom;
+                    background-repeat: no-repeat;                     
+                }
+            }
+            
+        }
+        // content pseudo sample
+        .block-main-content__service{
+            @include margin($margin-y, 0px, 0px, 0px);
+            .content-sample{
+                @include size(100%, 100px);
+                div,
+                h1{
+                    @include flex__center-items(center, center);
+                }
+                div{
+                    @include font(20px, 300, $primary);
+                    position: relative;
+                    &:before{
+                        @include size(15px, 15px);
+                        @include pseudo(0px, 0px,43%, 0px, $primary);
+                        opacity: 0.8;
+                    }
+                    &::after{
+                        @include size(15px, 15px);
+                        @include pseudo(0px, 0px, 0px, 40%, $secondary);
+                        opacity: 0.3;
+                    }
+                }
+                h1{
+                    @include font-size(50px);
+                }
+            }
+            .service-list{
+                @include size(30%, 330px);
+                
+                .service-icon{
+                    @include size(30px, 50px);
+                }
+            }
+        }
     }
 }
 @media screen and (min-width:1280px){
@@ -198,6 +426,28 @@ body{
             max-width: 1200px;
             margin: 0 auto;
             padding: 0px 20px;
+        }
+        .block-main-content__about-us{
+            .c-1{
+                @include size(50%, 300px);
+                @include margin(0px, 0px, 0px, $margin-y);
+            }
+        }
+        .block-main-content__send-box{
+            height: 500px;
+            .newsletter{
+                height: 400px;
+                .coll--left{
+                    .txt-white,
+                    .row-fluid{
+                        @include margin($margin-y, $margin-y, 0, 0);
+                    }
+                    
+                }
+            }
+        }
+        .block-main-content__service{
+            height: 700px;
         }
     }
 }

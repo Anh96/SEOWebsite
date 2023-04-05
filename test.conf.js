@@ -2,8 +2,9 @@ exports.config = {
     spects: [
         './js/test.js'
     ],
+    runner: "local",
     host:'localhost' ,
-    port: 444,
+    port: 9515,
     path:'./',
     capabilities:[
         {

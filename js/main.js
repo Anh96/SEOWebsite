@@ -1,7 +1,4 @@
 $(document).ready(function () {
-    // if($(window).width()>=1240){
-    //     $(".container").addClass("container--xxl");
-    // }
     if($(window).scrollTop()==0){
         $(".header-section__header-top div").css("color", "white");
         $(".navbar-list").css("color", "white");
@@ -15,13 +12,20 @@ $(document).ready(function () {
         if(index < 5){
             $(this).hover(function (e) {
                 // over
-                $(this).addClass("tab-active");
-                $(".navbar-list__item .tab-active").removeClass(".tab-active");
-            }, function () {
-                // out
-                // $(".navbar-list__item.tab-active").removeClass(".tab-active");
+                $(this).toggleClass("tab-active");
             }
         );
         }
     })
+    gsap.fromTo(".block-header__header-content .content-heading",{y:0, opacity:0, scale: 0}, {y: -10, opacity:1, duration: 1.5, scale: 1},);
+    gsap.fromTo(".block-header__header-content .content-desc",{y: 0, opacity:0, scale: 0.5}, {y: -10, opacity:1, duration: 1.5, scale: 1});
+    $(".block-header__header-content .button").each(function(index, value){
+       if(index==0){
+            gsap.fromTo($(this),{x: -20}, {x: 0, duration:1});
+       }
+       if(index==1){
+           gsap.fromTo($(this),{x: 50}, {x: 0, duration:1});
+        }
+    })
+    
 });
