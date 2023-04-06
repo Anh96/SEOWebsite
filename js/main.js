@@ -11,7 +11,6 @@ $(document).ready(function () {
     $(".navbar-list__item").each(function(index, value){
         if(index < 5){
             $(this).hover(function (e) {
-                // over
                 $(this).toggleClass("tab-active");
             }
         );
@@ -26,6 +25,14 @@ $(document).ready(function () {
        if(index==1){
            gsap.fromTo($(this),{x: 50}, {x: 0, duration:1});
         }
+    })
+    // service section animation
+    // service-items animation
+    gsap.fromTo(".service-item", {scale: 0, opacity: 0.1}, {scale:1, opacity:1, duration: 1.5});
+    // readmore button animation 
+    $(".service-item").hover(function(){
+        // gsap.fromTo((".button"), {width: "0px", opacity: 0.1, backgroundColor: "none"}, {width: "auto", opacity:1, backgroundColor: "white", duration: 1.5})
+        // console.log($(this).children($(".button")));
     })
     
 });

@@ -131,12 +131,39 @@ body{
     @include font(auto, auto, white);
 }
 .button{
+    @include font(1rem, 500, white);
+    @include border(1px, solid, white, $primary, 20px);
+    @include size(auto, 36px);
+    @include padding(6px,6px,16px,16px);
     cursor: pointer;
-    border: 0px;
-    background-color: unset;
+}
+.content-sample{
+    @include size(100%, 100px);
+    div,
+    h1{
+        @include flex__center-items(center, center);
+    }
+    div{
+        @include font(20px, 300, $primary);
+        position: relative;
+        &:before{
+            @include size(15px, 15px);
+            @include pseudo(4px, 0px,42%, 0px, $primary);
+            opacity: 0.5;
+        }
+        &::after{
+            @include size(15px, 15px);
+            @include pseudo(0px, 0, 42.5%, 0%, $secondary);
+            opacity: 0.3;
+        }
+    }
+    h1{
+        @include font-size(50px);
+    }
 }
 // set style
 .container{
+    height: fit-content;
     position: relative;
     background-color: white;
     .block__header-section{
@@ -242,6 +269,7 @@ body{
             }
         }
         .block-header__header-content{
+            @include padding(0px, 0px, $padding-x*2, $padding-x*2);
             @include color(white);
             position: absolute;
             top: 100px;
@@ -258,9 +286,7 @@ body{
                 .buttons-group{
                     .button{
                         @include size(120px, 40px);
-                        @include border(1px, solid, white, unset, 10px);
                         @include color(white);
-                        @include font-size(20px);
                         &:nth-child(2n+1){
                             @include color($dark);
                             background-color: white;
@@ -275,7 +301,7 @@ body{
     }
     .block__block-main-content{
         .block-main-content__about-us{
-            @include padding(0px, 0px, $padding-x, $padding-x);
+            @include padding(0px, 0px, $padding-x*2, $padding-x*2);
             .coll--left{
                 position: relative;
                 .content-heading{
@@ -288,14 +314,15 @@ body{
                     }
                     &:before{
                         @include size(15px, 15px);
-                        @include pseudo(5px, 0px,0px, 0px, $primary);
-                        opacity: 0.8;
+                        @include pseudo(4px, 0px,0px, 0px, $primary);
+                        opacity: 0.5;
                     }
                     &::after{
                         @include size(15px, 15px);
-                        @include pseudo(-10%, 0px, 5px, 0px, $secondary);
+                        @include pseudo(0px, 0, 5px, 0%, $secondary);
                         opacity: 0.3;
                     }
+                    
                 }
                 .cxA1{
                     @include size(100%, 80%);
@@ -312,16 +339,11 @@ body{
                     }
                     .buttons-group{
                         @include flex__center-items(center, -content);
-                        @include margin(20px, 0px, 0px, 0px);
-                        justify-content: space-between;
-                        .button__read-more{
-                            @include size(100px, 40px);
-                            @include border(1px, solid, white, $primary, 10px);
-                            @include font(20px, 400, white);
-                        }
+                        @include margin(16px, 0px, 0px, 0px);
                         .button__instagram,
                         .button__facebook,
                         .button__twister{
+                            @include margin(0, 0, 20px, 0);
                             @include size(40px, 40px);
                             @include border(1px, solid, $primary, white, 50%);
                             @include flex__center-items(center, center);
@@ -339,9 +361,10 @@ body{
         .block-main-content__send-box{
             @include margin($margin-y, 0px, 0px, 0px);
             .newsletter{
-                @include padding(0px, 0px, $padding-x, $padding-x);
+                @include padding(0px, 0px, $padding-x*2, $padding-x*2);
                 position: relative;
                 .coll--left{
+                    // width: 50%;
                     .txt-white{
                         &:nth-child(2n+1){
                             @include font-size(30px);
@@ -351,14 +374,18 @@ body{
                     .send-box{
                         @include padding(0px, 0px, 0px, 0px);
                         @include border(1px, solid, $light, $light, 30px);
-                        height: 50px;
+                        height: 48px;
                         input{
-                            @include size(90%, inherit);
+                            @include size(100%, inherit);
                             @include padding(10px, 10px, 10px, 10px);
                             @include border(1px, solid, $light, $light, 30px);
-                            @include font(15px, normal, $light);
+                            @include font(15px, normal, #888);
                             background: inherit;
                             border: 0px;
+                        }
+                        .button{
+                            @include border(0, none, none, unset, 50%);
+                            @include size(fit-content, fit-content);
                         }
                     }
                 }
@@ -384,35 +411,53 @@ body{
         // content pseudo sample
         .block-main-content__service{
             @include margin($margin-y, 0px, 0px, 0px);
-            .content-sample{
-                @include size(100%, 100px);
-                div,
-                h1{
-                    @include flex__center-items(center, center);
-                }
-                div{
-                    @include font(20px, 300, $primary);
-                    position: relative;
-                    &:before{
-                        @include size(15px, 15px);
-                        @include pseudo(0px, 0px,43%, 0px, $primary);
-                        opacity: 0.8;
-                    }
-                    &::after{
-                        @include size(15px, 15px);
-                        @include pseudo(0px, 0px, 0px, 40%, $secondary);
-                        opacity: 0.3;
-                    }
-                }
-                h1{
-                    @include font-size(50px);
-                }
-            }
+            @include padding(0px, 0px, $padding-x*2,  $padding-x*2);
             .service-list{
-                @include size(30%, 330px);
-                
-                .service-icon{
-                    @include size(30px, 50px);
+                @include flex__center-items(center, flex-start);
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: s;
+                .service-item{
+                    @include size(calc(100%/3), 350px);
+                    @include padding(0, 0, $padding-x/2, $padding-x/2);
+                    @include margin($margin-y/2, 0, 0, 0);
+                    position: relative;
+                    .m-row{
+                        @include padding(30px, 30px, 25px, 25px);
+                        @include size(100%, inherit);
+                        border-radius: 20px;
+                        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                        .s-row{
+                            @include size(100%, calc(100%/3));
+                            text-align: center;
+                            &:nth-child(3n+1){
+                                @include background(contain, no-repeat);
+                                @include flex__center-items(center, center);
+                                background-image: url("../imgs/icon-shape-primary.png");
+                                background-position: 50% 0;
+                                i{
+                                    @include font(50px, 300, white);
+                                }
+                            }
+                            &:nth-child(3n+2){
+                                @include margin(40px, 20px, 0px, 0px);
+                                span{
+                                    @include margin(20px,0px, 0px, 0px);
+                                }
+                            }
+                            &:nth-child(3n+3){
+                                .button{
+                                    position: relative;
+                                    &::before{
+                                        @include size(30px, 30px);
+                                        @include pseudo(0px, 0px, 0px, 0px, gray);
+                                        @include border(0px, none, none, gray, 50%);
+                                        opacity: 0.8;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -427,27 +472,63 @@ body{
             margin: 0 auto;
             padding: 0px 20px;
         }
-        .block-main-content__about-us{
-            .c-1{
-                @include size(50%, 300px);
-                @include margin(0px, 0px, 0px, $margin-y);
-            }
-        }
-        .block-main-content__send-box{
-            height: 500px;
-            .newsletter{
-                height: 400px;
-                .coll--left{
-                    .txt-white,
-                    .row-fluid{
-                        @include margin($margin-y, $margin-y, 0, 0);
-                    }
-                    
+        .block__block-main-content{
+            .block-main-content__about-us{
+                .c-1{
+                    @include size(50%, 300px);
+                    @include margin(0px, 0px, 0px, $margin-y);
                 }
             }
-        }
-        .block-main-content__service{
-            height: 700px;
+            .block-main-content__send-box{
+                height: 500px;
+                .newsletter{
+                    height: 400px;
+                    .coll--left{
+                        .txt-white,
+                        .row-fluid{
+                            @include margin($margin-y, $margin-y, 0, 0);
+                        }
+                        
+                    }
+                }
+            }
+            .block-main-content__service{
+                height: 700px;
+                .service-list{
+                    .service-item{
+
+                        .button{
+                            // @include border(0px, none, unset, unset, 20px);
+                            @include color($primary);
+                            background: linear-gradient( to left, rgb(232, 231, 231) 50%, white 50%);
+                            background-size: 200% 100%;
+                            background-position: right bottom;
+                            transition: all 2s ease-out;;
+                        }
+                        &:hover{
+                            .m-row{
+                                background-color: $primary;
+                                .s-row{
+                                    &:nth-child(3n+1){
+                                        background-image: url("../imgs/icon-shape-white.png");
+                                        i{
+                                            @include color($primary)
+                                        }
+                                    }
+                                    &:nth-child(3n+3){
+                                        .button{
+                                            background-position: left bottom;
+                                            &::before{
+                                                display: none;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
