@@ -161,6 +161,50 @@ body{
         @include font-size(50px);
     }
 }
+.grid-list{
+    .grid-item{
+        @include size(calc(100%/3), 350px);
+        @include padding(0, 0, $padding-x/2, $padding-x/2);
+        @include margin($margin-y/2, 0, 0, 0);
+        position: relative;
+        .m-row{
+            @include padding(30px, 30px, 25px, 25px);
+            @include size(100%, inherit);
+            border-radius: 20px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            .s-row{
+                @include size(100%, calc(100%/3));
+                text-align: center;
+                &:nth-child(3n+1){
+                    @include background(contain, no-repeat);
+                    @include flex__center-items(center, center);
+                    background-image: url("../imgs/icon-shape-primary.png");
+                    background-position: 50% 0;
+                    i{
+                        @include font(50px, 300, white);
+                    }
+                }
+                &:nth-child(3n+2){
+                    @include margin(40px, 20px, 0px, 0px);
+                    span{
+                        @include margin(20px,0px, 0px, 0px);
+                    }
+                }
+                &:nth-child(3n+3){
+                    .button{
+                        position: relative;
+                        &::before{
+                            @include size(30px, 30px);
+                            @include pseudo(0px, 0px, 0px, 0px, gray);
+                            @include border(0px, none, none, gray, 50%);
+                            opacity: 0.8;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 // set style
 .container{
     height: fit-content;
@@ -415,49 +459,6 @@ body{
                 @include flex__center-items(center, flex-start);
                 flex-direction: row;
                 flex-wrap: wrap;
-                justify-content: s;
-                .service-item{
-                    @include size(calc(100%/3), 350px);
-                    @include padding(0, 0, $padding-x/2, $padding-x/2);
-                    @include margin($margin-y/2, 0, 0, 0);
-                    position: relative;
-                    .m-row{
-                        @include padding(30px, 30px, 25px, 25px);
-                        @include size(100%, inherit);
-                        border-radius: 20px;
-                        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-                        .s-row{
-                            @include size(100%, calc(100%/3));
-                            text-align: center;
-                            &:nth-child(3n+1){
-                                @include background(contain, no-repeat);
-                                @include flex__center-items(center, center);
-                                background-image: url("../imgs/icon-shape-primary.png");
-                                background-position: 50% 0;
-                                i{
-                                    @include font(50px, 300, white);
-                                }
-                            }
-                            &:nth-child(3n+2){
-                                @include margin(40px, 20px, 0px, 0px);
-                                span{
-                                    @include margin(20px,0px, 0px, 0px);
-                                }
-                            }
-                            &:nth-child(3n+3){
-                                .button{
-                                    position: relative;
-                                    &::before{
-                                        @include size(30px, 30px);
-                                        @include pseudo(0px, 0px, 0px, 0px, gray);
-                                        @include border(0px, none, none, gray, 50%);
-                                        opacity: 0.8;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
             }
         }
     }
