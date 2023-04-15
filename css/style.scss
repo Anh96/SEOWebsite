@@ -1,213 +1,10 @@
-$primary: #2124B1;
-$secondary: #4777F5;
-$light: #F7FAFF;
-$dark: hsl(240, 15%, 13%);
-$padding-x: 24px;
-$margin-y: 48px;
 /* Option 2: Import via CSS */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
-// mixins
-// fonts
-@mixin font-size($fsize) {
-    font-size: $fsize;
-}
-@mixin font-weight($fweight){
-    font-weight: $fweight;
-}
-@mixin color($color){
-    color: $color;
-}
-@mixin font($fsize, $fweight, $color){
-    @include font-size($fsize);
-    @include font-weight($fweight);
-    @include color($color);
-}
-@mixin text-transform($text){
-    text-transform: $text;
-}
-// size
-@mixin size($width, $height){
-    width: $width;
-    height: $height;
-}
-// padding - margin
-@mixin padding($top, $bottom, $left, $right){
-    padding: $top $right $bottom $left;
-}
-@mixin margin($top, $bottom, $left, $right){
-    margin: $top $right $bottom $left;
-}
-// background
-@mixin background($bg-size, $bg-repeat){
-    background-size: $bg-size;
-    background-repeat: $bg-repeat;
-}
-// border
-@mixin border($bdSize, $bdstyle, $bdColor, $bdBackground, $bdRadius){
-    border: $bdSize $bdstyle $bdColor;
-    background-color: $bdBackground;
-    border-radius: $bdRadius;
-}
-// flex attributes mixins
-@mixin justify-content($jtf-content){
-    justify-content: $jtf-content;
-}
-@mixin align-item($alig-item){
-    align-items: center;
-}
-@mixin flex__center-items($align-item, $jt-content){
-    display: flex;
-    @include align-item($align-item);
-    @include justify-content($jt-content);
-}
-@mixin fixed($top, $left, $bottom, $right, $zindex) {
-    position: fixed;
-    top: $top;
-    left: $left;
-    bottom: $bottom;
-    right: $right;
-    z-index: $zindex;
-    transform:  translateZ(0);
-
-}
-// absolute
-@mixin absolute($top, $bottom, $left, $right){
-    position: abolute;
-    top: $top;
-    bottom: $bottom;
-    left: $left;
-    right: $right;
-}
-// Pseudo
-@mixin pseudo($top, $bottom, $left, $right, $bgColor){
-    content: "";
-    display: block;
-    position: absolute;
-    top: $top;
-    bottom: $bottom;
-    left: $left;
-    right: $right;
-    background-color: $bgColor;
-}
-// reset project
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    a{
-        text-decoration: none;
-    }
-    li{
-        list-style-type: none;
-    }
-    i{
-        @include font(15px, normal, $primary);
-    }
-}
-body{
-    // overflow: hidden;
-    background-color: $light;
-}
-.tab-active{
-    color: $secondary;
-    border-bottom: 1px solid $secondary;
-}
-.bg-primary{
-    background-color: $primary;
-}
-.bg-white{
-    background-color: white;
-}
-.row-fluid{
-    width: 100%;
-}
-.coll-half{
-    @include size(50%, auto);
-}
-.block-flex{
-    @include flex__center-items(center, -content)
-}
-.txt-white{
-    @include font(auto, auto, white);
-}
-.button{
-    @include font(1rem, 500, white);
-    @include border(1px, solid, white, $primary, 20px);
-    @include size(auto, 36px);
-    @include padding(6px,6px,16px,16px);
-    cursor: pointer;
-}
-.content-sample{
-    @include size(100%, 100px);
-    div,
-    h1{
-        @include flex__center-items(center, center);
-    }
-    div{
-        @include font(20px, 300, $primary);
-        position: relative;
-        &:before{
-            @include size(15px, 15px);
-            @include pseudo(4px, 0px,42%, 0px, $primary);
-            opacity: 0.5;
-        }
-        &::after{
-            @include size(15px, 15px);
-            @include pseudo(0px, 0, 42.5%, 0%, $secondary);
-            opacity: 0.3;
-        }
-    }
-    h1{
-        @include font-size(50px);
-    }
-}
-.grid-list{
-    .grid-item{
-        @include size(calc(100%/3), 350px);
-        @include padding(0, 0, $padding-x/2, $padding-x/2);
-        @include margin($margin-y/2, 0, 0, 0);
-        position: relative;
-        .m-row{
-            @include padding(30px, 30px, 25px, 25px);
-            @include size(100%, inherit);
-            border-radius: 20px;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-            .s-row{
-                @include size(100%, calc(100%/3));
-                text-align: center;
-                &:nth-child(3n+1){
-                    @include background(contain, no-repeat);
-                    @include flex__center-items(center, center);
-                    background-image: url("../imgs/icon-shape-primary.png");
-                    background-position: 50% 0;
-                    i{
-                        @include font(50px, 300, white);
-                    }
-                }
-                &:nth-child(3n+2){
-                    @include margin(40px, 20px, 0px, 0px);
-                    span{
-                        @include margin(20px,0px, 0px, 0px);
-                    }
-                }
-                &:nth-child(3n+3){
-                    .button{
-                        position: relative;
-                        &::before{
-                            @include size(30px, 30px);
-                            @include pseudo(0px, 0px, 0px, 0px, gray);
-                            @include border(0px, none, none, gray, 50%);
-                            opacity: 0.8;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+@import "../scss/reset";
+@import "../scss/base";
+@import "../scss/mixins";
 // set style
 .container{
-    height: fit-content;
     position: relative;
     background-color: white;
     .block__header-section{
@@ -221,8 +18,8 @@ body{
                 @include size(20%, auto);
                 @include margin(0px, 5px, 0px, 5px);
                 @include flex__center-items(center, -content);
-                .logo__search-icon i{
-                    @include font(50px,500, white);
+                i{
+                    @include font(50px,500, $light);
                 }
                 .logo__name{
                     @include flex__center-items(center, -content);
@@ -259,7 +56,7 @@ body{
                                     @include size(100%, inherit);
                                     @include padding(10px, 10px, 10px, 10px);
                                     i{
-                                        @include color(white);
+                                        @include color($light);
                                     }
                                 }
                             }
@@ -293,7 +90,7 @@ body{
             }   
         }
         .header-section__header-bg{
-            @include size(100%, 700px);
+            @include size(100%, 550px);
             .header-bg__bg{
                 @include size(100%, 100%);
                 background:
@@ -343,6 +140,7 @@ body{
         }
     }
     .block__block-main-content{
+        // about us
         .block-main-content__about-us{
             @include padding(0px, 0px, $padding-x*2, $padding-x*2);
             .coll--left{
@@ -357,12 +155,12 @@ body{
                     }
                     &:before{
                         @include size(15px, 15px);
-                        @include pseudo(4px, 0px,0px, 0px, $primary);
+                        @include pseudo(4px, 0px, $primary);
                         opacity: 0.5;
                     }
                     &::after{
                         @include size(15px, 15px);
-                        @include pseudo(0px, 0, 5px, 0%, $secondary);
+                        @include pseudo(0px,5px, $secondary);
                         opacity: 0.3;
                     }
                     
@@ -383,9 +181,7 @@ body{
                     .buttons-group{
                         @include flex__center-items(center, -content);
                         @include margin(16px, 0px, 0px, 0px);
-                        .button__instagram,
-                        .button__facebook,
-                        .button__twister{
+                        .button--social{
                             @include margin(0, 0, 20px, 0);
                             @include size(40px, 40px);
                             @include border(1px, solid, $primary, white, 50%);
@@ -393,7 +189,7 @@ body{
                             &:hover{
                                 background-color: $primary;
                                 i{
-                                    @include color(white);
+                                    @include color($light);
                                 }
                             }
                         }
@@ -401,13 +197,13 @@ body{
                 }
             }    
         }
+        // send box
         .block-main-content__send-box{
             @include margin($margin-y, 0px, 0px, 0px);
             .newsletter{
                 @include padding(0px, 0px, $padding-x*2, $padding-x*2);
                 position: relative;
                 .coll--left{
-                    // width: 50%;
                     .txt-white{
                         &:nth-child(2n+1){
                             @include font-size(30px);
@@ -451,18 +247,337 @@ body{
             }
             
         }
-        // content pseudo sample
+        // service 
         .block-main-content__service{
-            @include margin($margin-y, 0px, 0px, 0px);
-            @include padding(0px, 0px, $padding-x*2,  $padding-x*2);
             .service-list{
-                @include flex__center-items(center, flex-start);
-                flex-direction: row;
-                flex-wrap: wrap;
+                .service-item{
+                    .m-row{
+                        .s-row{
+                            @include size(100%, calc(100%/3));
+                            text-align: center;
+                            &:nth-child(3n+1){
+                                @include size(100%, calc(100%/3));
+                                @include flex__center-items(center, center);
+                                background: url("../imgs/icon-shape-primary.png") 100% no-repeat;
+                                background-position: 50% 0;
+                                i{
+                                    @include font(50px, 300, $light);
+                                }
+                            }
+                            &:nth-child(3n+2){
+                                @include margin(40px, 20px, 0px, 0px);
+                                span{
+                                    @include margin(20px,0px, 0px, 0px);
+                                }
+                            }
+                            &:nth-child(3n+3){
+                                position: relative;
+                                .button{
+                                    @include size(auto, fit-content);
+                                    &::before{
+                                        @include size(30px, 30px);
+                                        @include pseudo(0,30%, gray);
+                                        @include border(0px, none, none, gray, 50%);
+                                        opacity: 0.5;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // project
+        .block-main-content__project{
+            @include size(100%, auto);
+            position: relative;
+            z-index: 10;
+            .grid-list{
+                .grid-item{
+                    .m-row{
+                        .s-row{
+                            @include size(100%, 100%);
+                            img{
+                                @include size(100%, 100%);
+                                object-fit: contain;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // feedback
+        .block-main-content__feedback{
+            .grid-list{
+                @include size(100%, 400px);
+                .grid-item{
+                    margin-top: 0px;
+                    .m-row{
+                        @include border(1px, solid, white, unset, 10px);
+                        padding: 10px;
+                        .quote{
+                            @include font(70px, 600, white);
+                            @include size(100%, fit-content);
+                            margin-bottom: $margin-y/3;
+                        }
+                        .fbTxt{
+                            @include font(20px, 300, white);
+                            @include flex__center-items(center, center);
+                            margin-bottom: $margin-y/3;
+                        }
+                        .s-row.block-flex{
+                            @include size(100%, auto);
+                                .avatar{
+                                    @include size(70px, 70px);
+                                    margin-right: 16px;
+                                    img{
+                                        @include size(inherit, inherit);
+                                        object-fit: contain;
+                                        border-radius: 50%;
+                                    }
+                                }
+                                .client-info{
+                                    &__name{
+                                        @include font(30px, 400, white);
+                                    }
+                                    &__position{
+                                        @include font(20px, 400, white);
+                                    }
+                                }
+                        }
+                    }
+                }
+                .grid-item.active{
+                    .m-row{
+                        background-color: $light;
+                        .quote{
+                            @include color($primary);
+                        }
+                        .fbTxt{
+                            @include color(gray);
+                        }
+                        .client-info{
+                            .client-info__name{
+                                @include color($dark);
+                            }
+                            .client-info__position{
+                                @include color(gray);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // team
+        .block-main-content__our-team{
+            .grid-list{
+                height: 600px;
+                .grid-item{
+                    @include size(calc(100%/3), 100%);
+                    position: relative;
+                    cursor: pointer;
+                    .m-row{
+                        @include size(90%, 450px);
+                        position: absolute;
+                        top: 50px;
+                        background-color: white;
+                        z-index: 0;
+                        .buttons-group{
+                            @include size(fit-content, 95%);
+                            .button--social{
+                                @include size( 40px, 40px);
+                                @include flex__center-items(center, center);
+                                border-radius: 50%;
+                                margin-bottom: 20px;
+                            }
+                        }
+                        transition: all 1.4s ease;
+                    }
+                   img{
+                        @include size(95%, auto);
+                        position: absolute;
+                        top: 0px;
+                        left: 100px;
+                        border-radius: 20px;
+                    }
+                    &:nth-child(3n+1){
+                        z-index: 0;
+                    }
+                    &:nth-child(3n+2){
+                        z-index: 70;
+                    }
+                    &:nth-child(3n+3){
+                        z-index: 100;
+                    }
+                    &:hover{
+                        .m-row{
+                            background-color: $primary;
+                            .buttons-group{
+                                .button--social{
+                                    background-color: $light;
+                                }
+                            }
+                            .member-info{
+                                color: $light;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .block__block-footer{
+        @include font(1em, 500, white);
+        @include padding($padding-x*2, 0px, $padding-x/2, $padding-x/2);
+        .row-fluid{
+            @include padding($padding-x*2, $padding-x*2, $padding-x*2, $padding-x*2);
+            display: flex;
+            &:nth-child(2n+1){
+                .coll-25{
+                    @include margin(0, 1.5em, 0, 0);
+                    @include padding(0, 0, $padding-x/2, $padding-x/2);
+                    .s-row{
+                        @include flex__center-items(center, flex-start);
+                        @include margin(0, 1em, 0, 0);
+                        &--heading{
+                            @include font-size(25px);
+                        }
+                        .buttons-group{
+                            .button--social{
+                                @include border(0.2px, solid, $light, unset, 50%);
+                                @include size(40px, 40px);
+                                @include flex__center-items(center, center);
+                                @include margin(0, 0, 0, 5px);
+                            }
+                        }
+                        .coll-10{
+                            margin-right: $margin-y/3;
+                        }
+                        i{
+                            @include color($light);
+                        }
+                    }
+                    &:nth-child(4n+3){
+                        .m-row{
+                            @include flex__center-items(center, flex-start);
+                            flex-wrap: wrap;
+                            .s-row{
+                                @include size(calc(100%/3 - 12px), 100%);
+                                @include margin($padding-x/3, 0, 0, $padding-x/2);
+                                position: relative;
+                                img{
+                                    @include size(100%, 100%);
+                                }
+                            }
+                        }
+                    }
+                    &:nth-child(4n+4){
+                        .s-row{
+                            &:nth-child(3n+3){
+                                @include size(100%, auto);
+                                @include border(1px, solid, unset, $light, 20px);
+                                position: relative;
+                                background-color: $light;
+                                input,
+                                button{
+                                    border: 0px;
+                                    background-color: unset;
+                                }
+                                input{
+                                    @include size(100%, 48px);
+                                    @include padding(6px, 6px, 24px, 0px);
+                                    @include color(gray);
+                                }
+                                button{
+                                    @include margin(0, 0, 0, 24px);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &:nth-child(2n+2){
+                border-top: 0.1px solid $light;
+                justify-content: space-between;
+                .coll-half{
+                    &:nth-child(2n+2){
+                        a{
+                            @include size(25%, 100%);
+                            position: relative;
+                            display: block;
+                            color: $light;
+                            text-align: center;
+
+                            &:not(:nth-child(4n+4)){
+                                border-right: 0.5px solid $light;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .button__go-top{
+        @include size(50px, 50px);
+        @include flex__center-items(center, center);
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        transition: all 1.5s ease-in-out;
+        a{
+            @include border(0.5px, solid, white, $primary, 50%);
+            @include size(100%, 100%);
+            @include flex__center-items(center, center);
+            i{
+                @include font(30px, 500, $light);
+            }
+        }
+    }
+    &--about-page{
+        .block__header-section{
+            .block-header__header-content{
+                @include padding($padding-x*2, $padding-x*2, 0, 0);
+                text-align: center;
+                .padding-lr{
+                    @include margin($margin-y,0,0,0);
+                    @include padding(0, 0, $padding-x, $padding-x);
+                    h1{
+                        @include font(2.5em, 700, $light);
+                        @include margin(8px, 0,0,0);
+                    }
+                    hr{
+                        @include size(10%,1px);
+                        @include margin(0,16px,555px, 555px);
+                        transform: translateX(-34%);
+
+                        display: block
+                    }
+                    .bread-scrums{
+                        @include flex__center-items(center, center);
+                        &__item{
+                            a{
+                                @include font(1.2em, 300, $light);
+                                @include padding(0, 0, $padding-x/3, $padding-x/3);
+                            }
+                            &:nth-child(2n+2){
+                                display: flex;
+                                position: relative;
+                                &::before{
+                                    @include font(1.2em, 300, #8888);
+                                    @include absolute(0px,0px);
+                                    content: "/";
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
 }
+
 @media screen and (min-width:1280px){
     .container{
         max-width: 1200px;
@@ -493,17 +608,14 @@ body{
                 }
             }
             .block-main-content__service{
-                height: 700px;
                 .service-list{
                     .service-item{
-
                         .button{
-                            // @include border(0px, none, unset, unset, 20px);
                             @include color($primary);
-                            background: linear-gradient( to left, rgb(232, 231, 231) 50%, white 50%);
+                            background: linear-gradient( to left, rgb(244, 243, 243) 50%, white 50%);
                             background-size: 200% 100%;
                             background-position: right bottom;
-                            transition: all 2s ease-out;;
+                            transition: all .8s ease-out;;
                         }
                         &:hover{
                             .m-row{

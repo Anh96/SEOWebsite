@@ -1,0 +1,24 @@
+[
+    {
+        "products":[
+            {
+                "img": "../imgs/portfolio-1.jpg"
+            },
+            {
+                "img": "../imgs/portfolio-2.jpg"
+            },
+            {
+                "img": "../imgs/portfolio-3.jpg"
+            },
+            {
+                "img": "../imgs/portfolio-4.jpg"
+            },
+            {
+                "img": "../imgs/portfolio-5.jpg"
+            },
+            {
+                "img": "../imgs/portfolio-6.jpg"
+            }
+        ]
+    }
+]

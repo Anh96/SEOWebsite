@@ -1,0 +1,78 @@
+// mixins
+// fonts
+@mixin font-size($fsize) {
+    font-size: $fsize;
+}
+@mixin font-weight($fweight){
+    font-weight: $fweight;
+}
+@mixin color($color){
+    color: $color;
+}
+@mixin font($fsize, $fweight, $color){
+    @include font-size($fsize);
+    @include font-weight($fweight);
+    @include color($color);
+}
+@mixin text-transform($text){
+    text-transform: $text;
+}
+// size
+@mixin size($width, $height){
+    width: $width;
+    height: $height;
+}
+// padding - margin
+@mixin padding($top, $bottom, $left, $right){
+    padding: $top $right $bottom $left;
+}
+@mixin margin($top, $bottom, $left, $right){
+    margin: $top $right $bottom $left;
+}
+// background
+@mixin background($w, $h, $bg-repeat){
+    background-size: $w $h;
+    background-repeat: $bg-repeat;
+}
+// border
+@mixin border($bdSize, $bdstyle, $bdColor, $bdBackground, $bdRadius){
+    border: $bdSize $bdstyle $bdColor;
+    background-color: $bdBackground;
+    border-radius: $bdRadius;
+}
+// flex attributes mixins
+@mixin justify-content($jtf-content){
+    justify-content: $jtf-content;
+}
+@mixin align-item($alig-item){
+    align-items: center;
+}
+@mixin flex__center-items($align-item, $jt-content){
+    display: flex;
+    @include align-item($align-item);
+    @include justify-content($jt-content);
+}
+@mixin fixed($top, $left, $bottom, $right, $zindex) {
+    position: fixed;
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+    z-index: $zindex;
+    transform:  translateZ(0);
+
+}
+// absolute
+@mixin absolute($top,$left){
+    position: abolute;
+    top: $top;
+    left: $left;
+}
+// Pseudo
+@mixin pseudo($top, $left, $bgColor){
+    @include absolute($top, $left);
+    position: absolute;
+    content: "";
+    display: block;
+    background-color: $bgColor;
+}

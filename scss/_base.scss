@@ -1,0 +1,95 @@
+$primary: #2124B1;
+$secondary: #4777F5;
+$light: #F7FAFF;
+$dark: hsl(240, 15%, 13%);
+$padding-x: 24px;
+$margin-y: 48px;
+@import "../scss/mixins";
+body{
+    // overflow: hidden;
+    background-color: $light;
+}
+a{
+    cursor: pointer;
+}
+.tab-active{
+    color: $secondary;
+    border-bottom: 1px solid $secondary;
+}
+.bg-primary{
+    background-color: $primary;
+}
+.bg-white{
+    background-color: white;
+}
+.row-fluid{
+    @include size(100%, auto);
+}
+.coll-half{
+    @include size(50%, auto);
+}
+.coll-25{
+    @include size(25%, auto);
+}
+.coll-10{
+    @include size(10%, auto);
+}
+.block-flex{
+    @include flex__center-items(center, -content)
+}
+.txt-white{
+    @include font(auto, auto, white);
+}
+.button{
+    @include font(1rem, 500, white);
+    @include border(1px, solid, white, $primary, 20px);
+    @include size(auto, 36px);
+    @include padding(6px,6px,16px,16px);
+    cursor: pointer;
+}
+.content-sample{
+    @include size(100%, 100px);
+    div,
+    h1{
+        @include flex__center-items(center, center);
+    }
+    div{
+        @include font(20px, 300, $primary);
+        position: relative;
+        &:before{
+            @include size(15px, 15px);
+            @include pseudo(4px,42%, $primary);
+            opacity: 0.5;
+        }
+        &::after{
+            @include size(15px, 15px);
+            @include pseudo(0px, 42.5%, $secondary);
+            opacity: 0.3;
+        }
+    }
+    h1{
+        @include font-size(50px);
+    }
+}
+.grid{
+    @include size(100%, auto);
+    @include margin($margin-y, 0px, 0px, 0px);
+    @include padding(0px, 0px, $padding-x*2,  $padding-x*2);
+    .grid-list{
+        @include flex__center-items(center, -content);
+        flex-direction: row;
+        flex-wrap: wrap;
+        .grid-item{
+            @include size(calc(100%/3), 350px);
+            @include padding(0, 0, $padding-x/2, $padding-x/2);
+            @include margin($margin-y/2, 0, 0, 0);
+            position: relative;;
+            .m-row{
+                @include padding(30px, 30px, 25px, 25px);
+                @include size(100%, inherit);
+                border-radius: 20px;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            }
+        }
+    }
+}

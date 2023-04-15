@@ -1,0 +1,17 @@
+@import "../scss/base";
+// @import "../css/style.scss";
+@import "../scss/mixins";
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    a{
+        text-decoration: none;
+    }
+    li{
+        list-style-type: none;
+    }
+    i{
+        @include font(15px, normal, $primary);
+    }
+}
