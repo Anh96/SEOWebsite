@@ -603,6 +603,42 @@
             }
         }
     }
+    &--contact{
+        .block__block-main-content{
+           .block-main-content__contact{
+               form{
+                   @include margin($margin-y/3,0,0,0);
+                        .form-block{
+                            padding: 0 15%;
+                            .row-fluid{
+                                @include flex__center-items(center, center);
+                                @include margin($margin-y/3, 0, 0, 0);
+                                @include padding(0, 0, 8px,8px);
+                                input,
+                                textarea{
+                                    @include size(100%, auto);
+                                    @include padding(16px,16px,12px,12px);
+                                    @include border(1px, solid, #888, unset, 10px);
+                                }
+                                button{
+                                    @include size(100%, 50px);
+                                    @include font(20px, 500, $light);
+                                    @include border(1px, solid, $primary, $primary, 10px);
+                                }
+                                &:nth-child(4n+1){
+                                    @include flex__center-items(center, center);
+                                    padding: 0px;
+                                    .coll-half{
+                                        @include flex__center-items(center, center);
+                                        @include padding(0, 0, 8px,8px);
+                                    }
+                                }
+                            }
+                    }
+               }
+           }
+        }
+    }
 }
 
 @media screen and (min-width:1280px){
