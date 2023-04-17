@@ -1,24 +1,32 @@
-[
-    {
-        "products":[
-            {
-                "img": "../imgs/portfolio-1.jpg"
-            },
-            {
-                "img": "../imgs/portfolio-2.jpg"
-            },
-            {
-                "img": "../imgs/portfolio-3.jpg"
-            },
-            {
-                "img": "../imgs/portfolio-4.jpg"
-            },
-            {
-                "img": "../imgs/portfolio-5.jpg"
-            },
-            {
-                "img": "../imgs/portfolio-6.jpg"
-            }
-        ]
-    }
-]
+{
+    "projects": [
+      {
+        "img": "../imgs/portfolio-1.jpg"
+      },
+      {
+        "img": "../imgs/portfolio-2.jpg"
+      },
+      {
+        "img": "../imgs/portfolio-3.jpg"
+      },
+      {
+        "img": "../imgs/portfolio-4.jpg"
+      },
+      {
+        "img": "../imgs/portfolio-5.jpg"
+      },
+      {
+        "img": "../imgs/portfolio-6.jpg"
+      }
+    ],
+    "products":[
+        {
+            "id":1,
+            "name": "products 1"
+        },
+        {
+            "id":2,
+            "name": "products 2"
+        }
+    ]
+  }

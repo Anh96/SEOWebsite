@@ -292,14 +292,40 @@
             @include size(100%, auto);
             position: relative;
             z-index: 10;
+            .project-filter{
+                @include flex__center-items(center, space-between);
+                @include size(50%, auto);
+                @include font(1.1rem, 500, #888);
+                transform: translateX(50%);
+                div{
+                    cursor: pointer;
+                }
+                div.active{
+                    @include color($light);
+                    @include padding(15px, 15px, 15px, 15px);
+                    background-color: $primary;
+                    position: relative;
+                    border-radius: 10px;
+                    &::before{
+                        @include size(70%,100%);
+                        @include pseudo(0, 68%, $primary);
+                        transform: skew(-20deg);
+                        z-index: -10;
+                    }
+                }
+            }
             .grid-list{
                 .grid-item{
                     .m-row{
+                        box-shadow: none;
+                        padding: 0px;
                         .s-row{
                             @include size(100%, 100%);
+                            position: relative;
                             img{
                                 @include size(100%, 100%);
                                 object-fit: contain;
+                                border-radius: 20px;
                             }
                         }
                     }
