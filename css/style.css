@@ -998,6 +998,7 @@ a {
   font-weight: 500;
   color: white;
   padding: 48px 12px 0px 12px;
+  margin: 48px 0 0 0;
 }
 
 .container .block__block-footer .row-fluid {
@@ -1171,24 +1172,24 @@ a {
   color: #F7FAFF;
 }
 
-.container--about-page .block__header-section .block-header__header-content {
+.container--related-page .block__header-section .block-header__header-content {
   padding: 48px 0 48px 0;
   text-align: center;
 }
 
-.container--about-page .block__header-section .block-header__header-content .padding-lr {
+.container--related-page .block__header-section .block-header__header-content .padding-lr {
   margin: 48px 0 0 0;
   padding: 0 24px 0 24px;
 }
 
-.container--about-page .block__header-section .block-header__header-content .padding-lr h1 {
+.container--related-page .block__header-section .block-header__header-content .padding-lr h1 {
   font-size: 2.5em;
   font-weight: 700;
   color: #F7FAFF;
   margin: 8px 0 0 0;
 }
 
-.container--about-page .block__header-section .block-header__header-content .padding-lr hr {
+.container--related-page .block__header-section .block-header__header-content .padding-lr hr {
   width: 10%;
   height: 1px;
   margin: 0 555px 16px 555px;
@@ -1197,7 +1198,7 @@ a {
   display: block;
 }
 
-.container--about-page .block__header-section .block-header__header-content .padding-lr .bread-scrums {
+.container--related-page .block__header-section .block-header__header-content .padding-lr .bread-scrums {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1209,21 +1210,21 @@ a {
           justify-content: center;
 }
 
-.container--about-page .block__header-section .block-header__header-content .padding-lr .bread-scrums__item a {
+.container--related-page .block__header-section .block-header__header-content .padding-lr .bread-scrums__item a {
   font-size: 1.2em;
   font-weight: 300;
   color: #F7FAFF;
   padding: 0 8px 0 8px;
 }
 
-.container--about-page .block__header-section .block-header__header-content .padding-lr .bread-scrums__item:nth-child(2n+2) {
+.container--related-page .block__header-section .block-header__header-content .padding-lr .bread-scrums__item:nth-child(2n+2) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: relative;
 }
 
-.container--about-page .block__header-section .block-header__header-content .padding-lr .bread-scrums__item:nth-child(2n+2)::before {
+.container--related-page .block__header-section .block-header__header-content .padding-lr .bread-scrums__item:nth-child(2n+2)::before {
   font-size: 1.2em;
   font-weight: 300;
   color: #8888;

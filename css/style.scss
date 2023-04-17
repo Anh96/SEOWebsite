@@ -429,6 +429,7 @@
     .block__block-footer{
         @include font(1em, 500, white);
         @include padding($padding-x*2, 0px, $padding-x/2, $padding-x/2);
+        @include margin($margin-y,0,0,0,);
         .row-fluid{
             @include padding($padding-x*2, $padding-x*2, $padding-x*2, $padding-x*2);
             display: flex;
@@ -534,7 +535,7 @@
             }
         }
     }
-    &--about-page{
+    &--related-page{
         .block__header-section{
             .block-header__header-content{
                 @include padding($padding-x*2, $padding-x*2, 0, 0);
