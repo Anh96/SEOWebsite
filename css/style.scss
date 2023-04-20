@@ -2,30 +2,31 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 @import "../scss/reset";
 @import "../scss/base";
+@import "../scss/animation";
 @import "../scss/mixins";
 // set style
 .container{
     position: relative;
     background-color: white;
     .block__header-section{
+        position: relative;
         .header-section__header-top{
-            @include size(inherit, fit-content);
-            @include flex__center-items(center, -content);
-            @include fixed(0px, 0px, 0px, 0px, 99 );
-            justify-content: space-between;
+            @include flex__center-items(center, space-between);
+            @include fixed(0px, 0px, 0px, 0px, 999 );
+            @include padding(20px,20px,20px,20px);
             border-bottom: 0.2px solid $light;
             .header-top__logo{
                 @include size(20%, auto);
                 @include margin(0px, 5px, 0px, 5px);
-                @include flex__center-items(center, -content);
+                @include flex__center-items(center, unset);
                 i{
                     @include font(50px,500, $light);
                 }
                 .logo__name{
-                    @include flex__center-items(center, -content);
+                    @include flex__center-items(center, flex-start);
                     div{
                         &:nth-child(2n+1){
-                            @include font(50px,500, $dark);
+                            @include font(50px,500, $light);
                             @include text-transform(uppercase);
                         }
                         &:nth-child(2n+2){
@@ -35,18 +36,18 @@
                 }
             }
             .header-top__navbar{
-                @include size(80%, auto);
                 .navbar-list{
-                    @include justify-content(center);
-                    @include size(100%, auto);
-                    display: flex;
+                    @include flex__center-items(unset, center);
                     .navbar-list__item{
-                        @include flex__center-items(center, center);
-                        @include margin(0px, 4px , 0px, 2px);
-                        @include size(calc(100%/6), auto);
+                        @include margin(0px, 0px , 0px, 2px);
+                        @include size(calc(100%/6), 50px);
                         @include font-size(20px);
                         @include text-transform(capitalize);
-                        cursor: pointer;
+                        position: relative;
+                        a{
+                            @include flex__center-items(unset, center);
+                            @include size(100%, inherit);
+                        }
                         &:nth-child(6n+6){
                             display: block !important;
                             position: relative;
@@ -64,12 +65,12 @@
                                 @include size(100%, 120px);
                                 @include align-item(center);
                                 @include padding(10px, 10px, 10px, 10px);
-                                position: absolute;
+                                @include absolute(50px, unset);
                                 display: none;
                                 background-color: white;
-                                top: 50px;
                                 .sub-menu__item{
                                     @include size(100%, calc(100%/3));
+                                    @include font(1em, 300, $primary);
                                     display: block;
                                     &:nth-child(3n+2){
                                         margin: 5px 0px;
@@ -90,9 +91,9 @@
             }   
         }
         .header-section__header-bg{
-            @include size(100%, 550px);
+            @include size(100%, 100%);
             .header-bg__bg{
-                @include size(100%, 100%);
+                @include size(inherit, 100%);
                 background:
                         url(../imgs/bg-dot.png),
                         url(../imgs/bg-dot.png),
@@ -143,7 +144,8 @@
         // about us
         .block-main-content__about-us{
             @include padding(0px, 0px, $padding-x*2, $padding-x*2);
-            .coll--left{
+            @include margin($margin-y,0,0,0);
+            .c-1{
                 position: relative;
                 .content-heading{
                     @include font(20px, 500, $primary);
@@ -195,7 +197,7 @@
                         }
                     }
                 }
-            }    
+            }  
         }
         // send box
         .block-main-content__send-box{
@@ -213,7 +215,6 @@
                     .send-box{
                         @include padding(0px, 0px, 0px, 0px);
                         @include border(1px, solid, $light, $light, 30px);
-                        height: 48px;
                         input{
                             @include size(100%, inherit);
                             @include padding(10px, 10px, 10px, 10px);
@@ -228,21 +229,12 @@
                         }
                     }
                 }
-                .coll--right{
-                    position: absolute;
-                    top: 50%;
-                    right: 0px;
-                }
-                .send-box__bg{
-                    width: 100%;
-                    height: inherit;
-                    background: 
-                                url("../imgs/bg-top.png"),
-                                url("../imgs/bg-bottom.png");
-                    background-position: 
-                                        left top,
-                                        right bottom;
-                    background-repeat: no-repeat;                     
+                .coll--right{ 
+                    margin-left: $margin-y/2;
+                    img{
+                        @include size(100%, 100%);
+                        object-fit: contain
+                    }
                 }
             }
             
@@ -335,8 +327,10 @@
         // feedback
         .block-main-content__feedback{
             .grid-list{
-                @include size(100%, 400px);
+                @include size(100%, auto);
+                @include padding(10px, 10px, 10px, 10px);
                 .grid-item{
+                    @include size(calc(100%/3), 400px);
                     margin-top: 0px;
                     .m-row{
                         @include border(1px, solid, white, unset, 10px);
@@ -397,9 +391,8 @@
         // team
         .block-main-content__our-team{
             .grid-list{
-                height: 600px;
                 .grid-item{
-                    @include size(calc(100%/3), 100%);
+                    @include size(calc(100%/3), 550px);
                     position: relative;
                     cursor: pointer;
                     .m-row{
@@ -455,12 +448,11 @@
     .block__block-footer{
         @include font(1em, 500, white);
         @include padding($padding-x*2, 0px, $padding-x/2, $padding-x/2);
-        @include margin($margin-y,0,0,0,);
+        @include margin($margin-y,0,0,0);
         .row-fluid{
             @include padding($padding-x*2, $padding-x*2, $padding-x*2, $padding-x*2);
-            display: flex;
             &:nth-child(2n+1){
-                .coll-25{
+                .coll-item{
                     @include margin(0, 1.5em, 0, 0);
                     @include padding(0, 0, $padding-x/2, $padding-x/2);
                     .s-row{
@@ -580,7 +572,8 @@
 
                         display: block
                     }
-                    .bread-scrums{
+                    .breadcrum{
+                        @include size(100%, auto);
                         @include flex__center-items(center, center);
                         &__item{
                             a{
@@ -641,14 +634,25 @@
     }
 }
 
-@media screen and (min-width:1280px){
+@media only screen and (min-width:1280px){
     .container{
-        max-width: 1200px;
+        max-width: 1200px;;
         margin: 0 auto;
-        .header-section__header-top{
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0px 20px;
+        .block__header-section{
+            @include size(inherit, 550px);
+            .header-section__header-top{
+                @include size(inherit, fit-content);
+                padding: 0px 20px;
+                .header-top__navbar-menu-icon{
+                    display: none;
+                }
+                .header-top__navbar{
+                    @include size(80%, auto);
+                    .navbar-list{
+                        @include size(100%, auto);
+                    }
+                }
+            }
         }
         .block__block-main-content{
             .block-main-content__about-us{
@@ -656,8 +660,15 @@
                     @include size(50%, 300px);
                     @include margin(0px, 0px, 0px, $margin-y);
                 }
+                .c-2{
+                    width: 50%;position: relative;
+                    img{
+                        object-fit: 100%;
+                    }
+                }
             }
             .block-main-content__send-box{
+                margin-top: $margin-y;
                 height: 500px;
                 .newsletter{
                     height: 400px;
@@ -704,6 +715,230 @@
                     }
                 }
             }
+        }
+    }
+}
+@media only screen and (max-width:994px){
+    .container{
+        max-width: 100%;
+        overflow: hidden;
+        .block__header-section{
+            @include size(inherit, 800px);
+            .header-section__header-top{
+                @include flex__center-items(center, space-between);
+                @include size(100%, fit-content);
+                flex-wrap: wrap;
+                .header-top__logo{
+                    @include size(50%, inherit);
+                }
+                .header-top__navbar-menu-icon{
+                    @include flex__center-items(center, center);
+                    @include size(40%, 70px);
+                    div{
+                        @include size(100px, 60px);
+                        @include flex__center-items(center, center);
+                        @include border(1px, solid, #888, $light, 20px);
+                        cursor: pointer;
+                        i{
+                            @include font(50px, 500, $primary);
+                        }
+                    }
+                }
+                .header-top__navbar{
+                    display: none;
+                    .navbar-list{
+                        @include flex__center-items(center, center);
+                        flex-wrap: wrap;
+                        .navbar-list__item{
+                            width: 50%;
+                            a{
+                                @include font(20px, 300, $primary);
+                            }
+                        }
+                        .sbItem{
+                            .absbIt{
+                                div,
+                                i{
+                                    color: $primary !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .header-section__header-bg.bg-primary{
+                width: 100%;
+                height: inherit;
+            }
+            .block-header__header-content{
+                flex-wrap: wrap;
+                flex-direction: row;
+                .coll-half{
+                    @include size(100%, 50%);
+                    .buttons-group{
+                        @include flex__center-items(center, center);
+                    }
+                    &:nth-child(2n+2){
+                        @include margin($margin-y, 0, 0, 0);
+                        @include flex__center-items(center, center);
+                    }
+                }
+            }
+        }
+        .block__block-main-content{
+            position: relative;
+            .block-main-content__about-us.block-flex{
+                flex-wrap: wrap;
+                height: 550px;
+                .c-1,
+                .c-2{
+                    @include size(100%, 50%);
+                }
+                .c-2{
+                    @include flex__center-items(center, center);
+                    img{
+                        @include size(100%, 100%);
+                        object-fit: contain;
+                        @include flex__center-items(center, center);
+                    }
+                }
+            }
+            .block-main-content__send-box{
+                @include size(100%, fit-content);
+                .newsletter{
+                    @include size(100%, fit-content);
+                }
+            }
+            .block-main-content__service{
+                .service-list{
+                    .service-item{
+                        width: calc(100%/2);
+                    }
+                }
+            }
+            .block-main-content__project,
+            .block-main-content__our-team{
+                .grid-list{
+                    .grid-item{
+                        width: calc(100%/2);
+                    }
+                }
+            }
+        }
+        &--related-page{
+            .block__header-section{
+                @include size(inherit, 600px);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:480px){
+    .container{
+        .block__header-section{
+            @include size(inherit, 1000px);
+            .block-header__header-content{
+                padding:0px;
+                .coll-half{
+                    .content-heading{
+                        @include font(45px, 500, white);
+                    }
+                }
+            }
+        }
+        .block__block-main-content{
+            .content-sample{
+                .rsCus{
+                    @include font(30px, 500, $dark);
+                    @include flex__center-items(center, center);
+                }
+                div{
+                    @include font(20px, 300, $primary);
+                    position: relative;
+                    &:before{
+                        @include size(15px, 15px);
+                        @include pseudo(4px, 22%, $primary);
+                        position: absolute;
+                        opacity: 0.5;
+                    }
+                    &::after{
+                        @include size(15px, 15px);
+                        @include pseudo(0px, 23.5%, $secondary);
+                        opacity: 0.3;
+                    }
+                }
+            }
+            .block-main-content__send-box{
+                .coll--left{
+                    width: 100%;
+                    div{
+                        margin: $padding-x 0px;
+                    }
+                }
+                .coll--right{
+                    display: none;
+                }
+            }
+            .block-main-content__service,
+            .block-main-content__project,
+            .block-main-content__feedback,
+            .block-main-content__our-team{
+                padding: 0px 10px;
+                .grid-list{
+                    .grid-item{
+                        width: 100%;
+                    }
+                }
+            }
+            .block-main-content__feedback{
+                .grid-list{
+                    .grid-item{
+                        &:nth-child(3n+2){
+                            margin:  $margin-y/2 0px;
+                        }
+                    }
+                }
+            }
+            .block-main-content__project{
+                .project-filter{
+                    width: 100%;
+                    transform: translateX(0);
+                }
+            }
+        }
+        .block__block-footer{
+            .row-fluid{
+                padding: 0px;
+                &:nth-child(2n+1){
+                    flex-wrap: wrap;
+                    .coll-item{
+                        @include size(100%, 100%);
+                    }
+                }
+                &:nth-child(2n+2){
+                    flex-wrap: wrap;
+                    .coll-half{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        &--related-page{
+            .block__header-section{
+                @include size(inherit, 400px);
+            }
+        }
+        &--contact{
+            .block__block-main-content{
+                .block-main-content__contact{
+                    padding: 0px;
+                    form{
+                        .form-block{
+                            padding: 0px;
+                         }
+                    }
+                }
+             }
         }
     }
 }

@@ -4,34 +4,52 @@
         <title>Contact</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./lib/animation/animate.min.css">
         <link rel="stylesheet" href="./css/style.css">
         <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     </head>  
     <body>
         <div class="container block container--related-page container--contact">
-            <!-- header  -->
+            <!-- header  START-->
             <section id="top" class="block__header-section">
+                <!-- header  -->
                 <div class="header-section__header-top">
                     <div class="header-top__logo">
                         <div class="logo__search-icon">
                             <i class="bi bi-search"></i>
                         </div>
                         <div class="logo__name">
-                            <div>seo</div>
-                            <div>master</div>
+                            <div class="txt-white">seo</div>
+                            <div class="txt-white">master</div>
                         </div>
                     </div>
+                    <div class="header-top__navbar-menu-icon">
+                        <div>
+                            <i class="bi bi-list"></i>
+                        </div>
+                    </div>
+                    <!-- navigation START-->
                     <nav class="header-top__navbar">
                         <ul class="navbar-list">
-                            <li class="navbar-list__item tab-active">home</li>
-                            <li class="navbar-list__item">about</li>
-                            <li class="navbar-list__item">service</li>
-                            <li class="navbar-list__item">contact</li>
-                            <li class="navbar-list__item">project</li>
+                            <li class="navbar-list__item tab-active">
+                                <a href="./index.html">home</a>
+                            </li>
                             <li class="navbar-list__item">
-                                <div>
-                                    <div>page</div>
+                                <a href="./about.html">about</a>
+                            </li>
+                            <li class="navbar-list__item">
+                                <a href="./services.html">service</a>
+                            </li>
+                            <li class="navbar-list__item">
+                                <a href="./contact.html">contact</a>
+                            </li>
+                            <li class="navbar-list__item">
+                                <a href="./projects.html">project</a>
+                            </li>
+                            <li class="navbar-list__item sbItem">
+                                <div class="absbIt">
+                                    <div class="txt-white">page</div>
                                     <i class="bi bi-caret-down"></i>
                                 </div>
                                 <div class="sub-menu">
@@ -42,59 +60,67 @@
                             </li>
                         </ul>
                     </nav>
+                    <!-- navigation END-->
                 </div>
-                <div class="header-section__header-bg bg-primary">
+                <!-- header  END-->
+                <div class="header-section__header-bg bg-primary row-fluid">
                     <div class="header-bg__bg"></div>
                 </div>
                 <div class="block-header__header-content row-fluid">
                     <div class="padding-lr">
-                        <h1>Contact Us</h1>
+                        <h1>Contact</h1>
                         <hr>
-                        <div class="block-flex bread-scrums">
-                            <div class="bread-scrums__item">
+                        <div class="block-flex breadcrum">
+                            <div class="breadcrum__item">
                                 <a href="">Home</a>
                             </div>
-                            <div class="bread-scrums__item">
+                            <div class="breadcrum__item">
                                 <a href="">Contact</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+            <!-- header END-->
+            <!-- ------------------------------------------------>
+
             <!-- body content -->
-            <section class="block__block-main-content">
-                <div class="block-main-content__contact row-fluid grid">
-                    <div class="content-sample">
-                        <div class="service-heading ">Contact Us</div>
-                        <h1 class="rsCus">Contact For Any Query</h1>
-                    </div>
-                    <form action="" method="get">
-                        <div class="row-fluid form-block">
-                            <div class="row-fluid">
-                                <div class="coll-half s-row">
-                                    <input type="text" name="" id="name" placeholder="Your Name">
-                                </div>
-                                <div class="coll-half s-row">
-                                    <input type="email" name="" id="email" placeholder="Your Email">
-                                </div>
-                            </div>
-                            <div class="row-fluid">
-                                <input type="text" name="" id="subject" placeholder="Subject">
-                            </div>
-                            <div class="row-fluid">
-                                <textarea name="" id="text-area" cols="30" rows="10" placeholder="Message"></textarea>
-                            </div>
-                            <div class="row-fluid">
-                                <button class="buttonn" type="submit">Send Message</button>
-                            </div>
+                <section class="block__block-main-content">
+                    <div class="block-main-content__contact row-fluid grid">
+                        <div class="content-sample">
+                            <div class="service-heading ">Contact Us</div>
+                            <h1 class="rsCus">Contact For Any Query</h1>
                         </div>
-                    </form>
-                </div>
-            </section>
-            <!-- footer -->
+                        <form action="" method="get">
+                            <div class="row-fluid form-block">
+                                <div class="row-fluid">
+                                    <div class="coll-half s-row">
+                                        <input type="text" name="" id="name" placeholder="Your Name">
+                                    </div>
+                                    <div class="coll-half s-row">
+                                        <input type="email" name="" id="email" placeholder="Your Email">
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <input type="text" name="" id="subject" placeholder="Subject">
+                                </div>
+                                <div class="row-fluid">
+                                    <textarea name="" id="text-area" cols="30" rows="10" placeholder="Message"></textarea>
+                                </div>
+                                <div class="row-fluid">
+                                    <button class="buttonn" type="submit">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            <!-- end body content -->
+            <!-------------------------------------------------->
+
+            <!-- Footer  START-->
             <section class="block__block-footer bg-primary footer">
-                <div class="row-fluid">
-                    <div class="coll-25">
+                <div class="row-fluid block-flex">
+                    <div class="coll-25 coll-item">
                         <div class="s-row s-row--heading">Get In Touch</div>
                         <div class="s-row">
                             <div class="coll-10">
@@ -128,7 +154,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="coll-25">
+                    <div class="coll-25 coll-item">
                         <div class="s-row s-row--heading">Popular Link</div>
                         <div class="s-row">
                             <div class="coll-10">
@@ -161,11 +187,11 @@
                             <div class="coll-90 email">Career</div>
                         </div>
                     </div>
-                    <div class="coll-25 project-gallery">
+                    <div class="coll-25 project-gallery coll-item">
                         <div class="s-row s-row--heading">Project Gallery</div>
                         <div class="m-row block-flex gallery-list"></div>
                     </div>
-                    <div class="coll-25 newsletter">
+                    <div class="coll-25 newsletter coll-item">
                         <div class="s-row s-row--heading">Newsletter</div>
                         <div class="s-row">
                             Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu
@@ -222,12 +248,17 @@
                     </div>
                 </div>
             </section>
-            <section class="button__go-top">
-                <a href="#top">
-                    <i class="bi bi-arrow-up"></i>
-                </a>
-            </section>
+            <!--  End Footer END-->
+            <!-------------------------------------------------->
+
+            <!-- Button go to top -->
+                <section class="button__go-top">
+                    <a href="#top">
+                        <i class="bi bi-arrow-up"></i>
+                    </a>
+                </section>
         </div>
+        <script src="./lib/wow/wow.min.js"></script>
         <script src="./js/main.js"></script>
     </body>
 </html>

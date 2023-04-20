@@ -1,5 +1,4 @@
 @import "../scss/base";
-// @import "../css/style.scss";
 @import "../scss/mixins";
 *{
     box-sizing: border-box;
@@ -7,6 +6,7 @@
     margin: 0;
     a{
         text-decoration: none;
+        @include color(white);
     }
     li{
         list-style-type: none;

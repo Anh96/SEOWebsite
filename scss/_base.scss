@@ -6,7 +6,6 @@ $padding-x: 24px;
 $margin-y: 48px;
 @import "../scss/mixins";
 body{
-    // overflow: hidden;
     background-color: $light;
 }
 a{
@@ -40,6 +39,9 @@ a{
 .txt-white{
     @include font(auto, auto, white);
 }
+.margin-48{
+    margin-top: $margin-y;
+}
 .button{
     @include font(1rem, 500, white);
     @include border(1px, solid, white, $primary, 20px);
@@ -48,7 +50,7 @@ a{
     cursor: pointer;
 }
 .content-sample{
-    @include size(100%, 100px);
+    @include size(100%, auto);
     div,
     h1{
         @include flex__center-items(center, center);
@@ -93,3 +95,4 @@ a{
         }
     }
 }
+
