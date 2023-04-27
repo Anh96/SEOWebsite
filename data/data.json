@@ -1,32 +1,60 @@
 {
     "projects": [
       {
-        "img": "../imgs/portfolio-1.jpg"
+        "img": "../imgs/portfolio-1.jpg",
+        "project_field": "design"
       },
       {
-        "img": "../imgs/portfolio-2.jpg"
+        "img": "../imgs/portfolio-2.jpg",
+        "project_field": "design"
+
       },
       {
-        "img": "../imgs/portfolio-3.jpg"
+        "img": "../imgs/portfolio-3.jpg",
+        "project_field": "design"
       },
       {
-        "img": "../imgs/portfolio-4.jpg"
+        "img": "../imgs/portfolio-4.jpg",
+        "project_field": "development"
       },
       {
-        "img": "../imgs/portfolio-5.jpg"
+        "img": "../imgs/portfolio-5.jpg",
+        "project_field": "development"
       },
       {
-        "img": "../imgs/portfolio-6.jpg"
+        "img": "../imgs/portfolio-6.jpg",
+        "project_field": "development"
       }
     ],
-    "products":[
-        {
-            "id":1,
-            "name": "products 1"
+    "feedback":[
+        { 
+          "feedbackKey": 1,
+          "feedbackDescription": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+          "feedbackUserInfo": {
+            "name" : "Miley Happy",
+            "profession" : "designer",
+            "avatar" : "../imgs/testimonial-1.jpg"
+          }
         },
-        {
-            "id":2,
-            "name": "products 2"
+        { 
+          "feedbackKey": 2,
+          "feedbackDescription": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+          "feedbackUserInfo": {
+            "name" : "Jack",
+            "profession" : "Manager",
+            "avatar" : "../imgs/testimonial-2.jpg"
+
+          }
+        },
+        { 
+          "feedbackKey": 3,
+          "feedbackDescription": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+          "feedbackUserInfo": {
+            "name" : "Testimo Bras",
+            "profession" : "CEO",
+            "avatar" : "../imgs/testimonial-3.jpg"
+
+          }
         }
     ]
   }

@@ -4,7 +4,6 @@
 @import "../scss/base";
 @import "../scss/animation";
 @import "../scss/mixins";
-// set style
 .container{
     position: relative;
     background-color: white;
@@ -326,11 +325,19 @@
         }
         // feedback
         .block-main-content__feedback{
-            .grid-list{
-                @include size(100%, auto);
-                @include padding(10px, 10px, 10px, 10px);
+            @include padding($padding-x*2, $padding-x*2, $padding-x/2, $padding-x/2);
+            position: relative;
+            overflow-x: hidden;
+            .feedback-banner{
+                @include padding($padding-x*2, $padding-x*2, $padding-x*2, $padding-x*2);
+                position: relative;
+                flex-wrap: nowrap;
+                // animation: fadeInRight 7.5s linear infinite;
+                &:hover{
+                    animation-play-state: paused;
+                }
                 .grid-item{
-                    @include size(calc(100%/3), 400px);
+                    // animation: fadeInRight 3.5s linear infinite;
                     margin-top: 0px;
                     .m-row{
                         @include border(1px, solid, white, unset, 10px);
@@ -655,6 +662,7 @@
             }
         }
         .block__block-main-content{
+            // about us
             .block-main-content__about-us{
                 .c-1{
                     @include size(50%, 300px);
@@ -667,6 +675,7 @@
                     }
                 }
             }
+            // send box
             .block-main-content__send-box{
                 margin-top: $margin-y;
                 height: 500px;
@@ -681,6 +690,7 @@
                     }
                 }
             }
+            // service
             .block-main-content__service{
                 .service-list{
                     .service-item{
@@ -711,6 +721,21 @@
                                     }
                                 }
                             }
+                        }
+                    }
+                }
+            }
+            // feedback
+            .block-main-content__feedback{
+                .feedback-banner{
+                    @include flex__center-items(center, center);
+                    @include padding($padding-x*2, $padding-x*2, $padding-x*2, $padding-x*2);
+                    @include size(auto, auto);
+                    .grid-item{
+                        @include size(100%, 350px);
+                        cursor: grab;
+                        &.is-draging{
+                            cursor: grabbing
                         }
                     }
                 }
@@ -787,6 +812,20 @@
         }
         .block__block-main-content{
             position: relative;
+            .content-sample{
+                div{
+                    &:before{
+                        @include pseudo(4px, 38%, $primary);
+                    }
+                    &::after{
+                        @include pseudo(0px, 38.6%, $secondary);
+                    }
+                }
+                h1{
+                    @include font-size(50px);
+                }
+            }
+            // about us
             .block-main-content__about-us.block-flex{
                 flex-wrap: wrap;
                 height: 550px;
@@ -803,12 +842,14 @@
                     }
                 }
             }
+            // send box
             .block-main-content__send-box{
                 @include size(100%, fit-content);
                 .newsletter{
                     @include size(100%, fit-content);
                 }
             }
+            // service
             .block-main-content__service{
                 .service-list{
                     .service-item{
@@ -816,6 +857,18 @@
                     }
                 }
             }
+            // feedback
+            .block-main-content__feedback{
+                padding: 0px;
+                .feedback-banner{
+                    @include flex__center-items(center, center);
+                    @include size(auto, auto);
+                    .grid-item{
+                        @include size(100%, 400px);
+                    }
+                }
+            }
+            // project, team
             .block-main-content__project,
             .block-main-content__our-team{
                 .grid-list{
@@ -891,8 +944,9 @@
                 }
             }
             .block-main-content__feedback{
-                .grid-list{
+                .feedback-banner{
                     .grid-item{
+                        width: 100%;
                         &:nth-child(3n+2){
                             margin:  $margin-y/2 0px;
                         }
