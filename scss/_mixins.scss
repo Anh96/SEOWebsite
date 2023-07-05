@@ -47,7 +47,7 @@
 @mixin align-item($alig-item){
     align-items: center;
 }
-@mixin flex__center-items($align-item, $jt-content){
+@mixin flex($align-item, $jt-content){
     display: flex;
     @include align-item($align-item);
     @include justify-content($jt-content);

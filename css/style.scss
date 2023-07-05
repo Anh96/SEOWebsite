@@ -10,19 +10,19 @@
     .block__header-section{
         position: relative;
         .header-section__header-top{
-            @include flex__center-items(center, space-between);
+            @include flex(center, space-between);
             @include fixed(0px, 0px, 0px, 0px, 999 );
             @include padding(20px,20px,20px,20px);
             border-bottom: 0.2px solid $light;
             .header-top__logo{
                 @include size(20%, auto);
                 @include margin(0px, 5px, 0px, 5px);
-                @include flex__center-items(center, unset);
+                @include flex(center, unset);
                 i{
                     @include font(50px,500, $light);
                 }
                 .logo__name{
-                    @include flex__center-items(center, flex-start);
+                    @include flex(center, flex-start);
                     div{
                         &:nth-child(2n+1){
                             @include font(50px,500, $light);
@@ -36,7 +36,7 @@
             }
             .header-top__navbar{
                 .navbar-list{
-                    @include flex__center-items(unset, center);
+                    @include flex(unset, center);
                     .navbar-list__item{
                         @include margin(0px, 0px , 0px, 2px);
                         @include size(calc(100%/6), 50px);
@@ -44,7 +44,7 @@
                         @include text-transform(capitalize);
                         position: relative;
                         a{
-                            @include flex__center-items(unset, center);
+                            @include flex(unset, center);
                             @include size(100%, inherit);
                         }
                         &:nth-child(6n+6){
@@ -52,7 +52,7 @@
                             position: relative;
                             div{
                                 &:nth-child(2n+1){
-                                    @include flex__center-items(center, -content);
+                                    @include flex(center, -content);
                                     @include size(100%, inherit);
                                     @include padding(10px, 10px, 10px, 10px);
                                     i{
@@ -180,13 +180,13 @@
                         }
                     }
                     .buttons-group{
-                        @include flex__center-items(center, -content);
+                        @include flex(center, -content);
                         @include margin(16px, 0px, 0px, 0px);
                         .button--social{
                             @include margin(0, 0, 20px, 0);
                             @include size(40px, 40px);
                             @include border(1px, solid, $primary, white, 50%);
-                            @include flex__center-items(center, center);
+                            @include flex(center, center);
                             &:hover{
                                 background-color: $primary;
                                 i{
@@ -248,7 +248,7 @@
                             text-align: center;
                             &:nth-child(3n+1){
                                 @include size(100%, calc(100%/3));
-                                @include flex__center-items(center, center);
+                                @include flex(center, center);
                                 background: url("../imgs/icon-shape-primary.png") 100% no-repeat;
                                 background-position: 50% 0;
                                 i{
@@ -284,7 +284,7 @@
             position: relative;
             z-index: 10;
             .project-filter{
-                @include flex__center-items(center, space-between);
+                @include flex(center, space-between);
                 @include size(50%, auto);
                 @include font(1.1rem, 500, #888);
                 transform: translateX(50%);
@@ -323,25 +323,23 @@
                 }
             }
         }
-        // feedback
+        // TESTIMONIAL SLIDES
         .block-main-content__feedback{
             @include padding($padding-x*2, $padding-x*2, $padding-x/2, $padding-x/2);
             position: relative;
             overflow-x: hidden;
             .feedback-banner{
-                @include padding($padding-x*2, $padding-x*2, $padding-x*2, $padding-x*2);
+                // @include padding($padding-x*2, $padding-x*2, $padding-x*2, $padding-x*2);
                 position: relative;
                 flex-wrap: nowrap;
-                // animation: fadeInRight 7.5s linear infinite;
                 &:hover{
                     animation-play-state: paused;
                 }
                 .grid-item{
-                    // animation: fadeInRight 3.5s linear infinite;
                     margin-top: 0px;
+                    padding: 10px;
                     .m-row{
                         @include border(1px, solid, white, unset, 10px);
-                        padding: 10px;
                         .quote{
                             @include font(70px, 600, white);
                             @include size(100%, fit-content);
@@ -349,7 +347,7 @@
                         }
                         .fbTxt{
                             @include font(20px, 300, white);
-                            @include flex__center-items(center, center);
+                            @include flex(center, center);
                             margin-bottom: $margin-y/3;
                         }
                         .s-row.block-flex{
@@ -393,6 +391,7 @@
                         }
                     }
                 }
+                
             }
         }
         // team
@@ -412,7 +411,7 @@
                             @include size(fit-content, 95%);
                             .button--social{
                                 @include size( 40px, 40px);
-                                @include flex__center-items(center, center);
+                                @include flex(center, center);
                                 border-radius: 50%;
                                 margin-bottom: 20px;
                             }
@@ -463,7 +462,7 @@
                     @include margin(0, 1.5em, 0, 0);
                     @include padding(0, 0, $padding-x/2, $padding-x/2);
                     .s-row{
-                        @include flex__center-items(center, flex-start);
+                        @include flex(center, flex-start);
                         @include margin(0, 1em, 0, 0);
                         &--heading{
                             @include font-size(25px);
@@ -472,7 +471,7 @@
                             .button--social{
                                 @include border(0.2px, solid, $light, unset, 50%);
                                 @include size(40px, 40px);
-                                @include flex__center-items(center, center);
+                                @include flex(center, center);
                                 @include margin(0, 0, 0, 5px);
                             }
                         }
@@ -485,7 +484,7 @@
                     }
                     &:nth-child(4n+3){
                         .m-row{
-                            @include flex__center-items(center, flex-start);
+                            @include flex(center, flex-start);
                             flex-wrap: wrap;
                             .s-row{
                                 @include size(calc(100%/3 - 12px), 100%);
@@ -545,7 +544,7 @@
     }
     .button__go-top{
         @include size(50px, 50px);
-        @include flex__center-items(center, center);
+        @include flex(center, center);
         display: none;
         position: fixed;
         bottom: 20px;
@@ -554,7 +553,7 @@
         a{
             @include border(0.5px, solid, white, $primary, 50%);
             @include size(100%, 100%);
-            @include flex__center-items(center, center);
+            @include flex(center, center);
             i{
                 @include font(30px, 500, $light);
             }
@@ -581,7 +580,7 @@
                     }
                     .breadcrum{
                         @include size(100%, auto);
-                        @include flex__center-items(center, center);
+                        @include flex(center, center);
                         &__item{
                             a{
                                 @include font(1.2em, 300, $light);
@@ -611,7 +610,7 @@
                         .form-block{
                             padding: 0 15%;
                             .row-fluid{
-                                @include flex__center-items(center, center);
+                                @include flex(center, center);
                                 @include margin($margin-y/3, 0, 0, 0);
                                 @include padding(0, 0, 8px,8px);
                                 input,
@@ -626,10 +625,10 @@
                                     @include border(1px, solid, $primary, $primary, 10px);
                                 }
                                 &:nth-child(4n+1){
-                                    @include flex__center-items(center, center);
+                                    @include flex(center, center);
                                     padding: 0px;
                                     .coll-half{
-                                        @include flex__center-items(center, center);
+                                        @include flex(center, center);
                                         @include padding(0, 0, 8px,8px);
                                     }
                                 }
@@ -726,20 +725,16 @@
                 }
             }
             // feedback
-            .block-main-content__feedback{
-                .feedback-banner{
-                    @include flex__center-items(center, center);
-                    @include padding($padding-x*2, $padding-x*2, $padding-x*2, $padding-x*2);
-                    @include size(auto, auto);
-                    .grid-item{
-                        @include size(100%, 350px);
-                        cursor: grab;
-                        &.is-draging{
-                            cursor: grabbing
-                        }
-                    }
-                }
-            }
+            // .block-main-content__feedback{
+            //     .feedback-banner{
+            //         @include padding($padding-x*2, $padding-x*2, $padding-x*2, $padding-x*2);
+            //         .grid-item{
+            //             &.is-draging{
+            //                 cursor: grabbing
+            //             }
+            //         }
+            //     }
+            // }
         }
     }
 }
@@ -750,18 +745,18 @@
         .block__header-section{
             @include size(inherit, 800px);
             .header-section__header-top{
-                @include flex__center-items(center, space-between);
+                @include flex(center, space-between);
                 @include size(100%, fit-content);
                 flex-wrap: wrap;
                 .header-top__logo{
                     @include size(50%, inherit);
                 }
                 .header-top__navbar-menu-icon{
-                    @include flex__center-items(center, center);
+                    @include flex(center, center);
                     @include size(40%, 70px);
                     div{
                         @include size(100px, 60px);
-                        @include flex__center-items(center, center);
+                        @include flex(center, center);
                         @include border(1px, solid, #888, $light, 20px);
                         cursor: pointer;
                         i{
@@ -772,7 +767,7 @@
                 .header-top__navbar{
                     display: none;
                     .navbar-list{
-                        @include flex__center-items(center, center);
+                        @include flex(center, center);
                         flex-wrap: wrap;
                         .navbar-list__item{
                             width: 50%;
@@ -801,11 +796,11 @@
                 .coll-half{
                     @include size(100%, 50%);
                     .buttons-group{
-                        @include flex__center-items(center, center);
+                        @include flex(center, center);
                     }
                     &:nth-child(2n+2){
                         @include margin($margin-y, 0, 0, 0);
-                        @include flex__center-items(center, center);
+                        @include flex(center, center);
                     }
                 }
             }
@@ -834,11 +829,11 @@
                     @include size(100%, 50%);
                 }
                 .c-2{
-                    @include flex__center-items(center, center);
+                    @include flex(center, center);
                     img{
                         @include size(100%, 100%);
                         object-fit: contain;
-                        @include flex__center-items(center, center);
+                        @include flex(center, center);
                     }
                 }
             }
@@ -861,7 +856,7 @@
             .block-main-content__feedback{
                 padding: 0px;
                 .feedback-banner{
-                    @include flex__center-items(center, center);
+                    @include flex(center, center);
                     @include size(auto, auto);
                     .grid-item{
                         @include size(100%, 400px);
@@ -903,7 +898,7 @@
             .content-sample{
                 .rsCus{
                     @include font(30px, 500, $dark);
-                    @include flex__center-items(center, center);
+                    @include flex(center, center);
                 }
                 div{
                     @include font(20px, 300, $primary);

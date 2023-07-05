@@ -120,7 +120,7 @@ $(document).ready(function () {
                 .join("");
                 $(".block__block-footer .project-gallery .gallery-list").html(htmls);
             });
-            // feedback slide
+            // testimonial slide
             $.getJSON("../data/data.json", (data)=>{
                 let htmls = data.feedback.map((fdb)=>{
                     return `
@@ -143,11 +143,7 @@ $(document).ready(function () {
                 })
                 .join("");
                 $(".block-main-content__feedback .feedback-banner").html(htmls);
-                $(".block-main-content__feedback .feedback-banner .grid-item").each(function () { 
-                    if($(this).index()%2 != 0){
-                        $(this).addClass("active");
-                    }
-                });
+                $(".block-main-content__feedback .feedback-banner .grid-item").eq(0).addClass("active");
                 dragDropSlide();
             });
 
@@ -234,73 +230,19 @@ function filter_project(btns){
     })
     
 }
-// handle feedback-banner
+// handle Testimonial slides.
 function dragDropSlide(){
-    let fdbContainer = $(".block-main-content__feedback");
-    let fdb = $(".block-main-content__feedback .feedback-banner");
-    let fdbItems = $(".block-main-content__feedback .feedback-banner .grid-item");
-    let fdbItemWidth = $(fdbItems).width();
-    let fdbWidth = fdbItemWidth * $(fdbItems).length;
-    let isDraging = false;
-    let speed =0, touchStart = 0, touchX =0, x=0, scrollX =0, oldScrollX =0;
-    // lerp
-    const lerp = (v0, v1, t) => {
-        return v0 * ( 1 - t ) + v1 * t
-    }
-    //   dispose
-    const dispose = (scroll) => {
-        gsap.set($(fdbItems), {
-          x: (i) => {
-            return i * fdbItemWidth + scroll
-          },
-          modifiers: {
-            x: (x, target) => {
-              const s = gsap.utils.wrap(-fdbItemWidth, fdbWidth - fdbItemWidth, parseInt(x))
-              return `${s}px`
-            }
-          }
-        })
-    } 
-    // dispose(0)
-    // hanlde mouse event
-    var dragStart = (e)=>{
-        touchStart = e.clientX || e.touches[0].clientX
-        isDraging = true;
-        $(fdbItems).addClass("is-draging");
-        // console.log(touchStart)
-    }
-    var dragMove = (e)=>{
-        if(!isDraging){
-            return;
-        }
-        touchX = e.clientX || e.touches[0].clientX
-        scrollX += (touchX - touchStart) * 1.5;
+    let isDraggable = false;
+    let  x, scollX;
+    const sliderWrapper = $(".block-main-content__feedback .feedback-banner");
+    $(sliderWrapper).mouseenter(function(){
+        $(this).css("cursor", "grab");
+    })
+    $(sliderWrapper).mousemove(function(e){
+        if(!isDraggable) return;
         e.preventDefault();
-        touchStart = touchX;
-    }
-    var dragEnd = ()=>{
-        isDraging = false;
-        $(fdbItems).removeClass("is-draging");
-    }
-    // listener
+        x = e.offsetX;
 
-    $(fdb).on("mousedown", dragStart);
-    $(fdb).on("mousemove", dragMove);
-    $(fdb).on("mouseup", dragEnd);
-
-    const render = () => {
-        requestAnimationFrame(render)
-        x = lerp(x, scrollX, .1)
-        dispose(x)
-        
-        speed = x - oldScrollX
-        oldScrollX = x
-        
-        gsap.to($(fdbItems), {
-        //   skewX: - speed * .2,
-          rotate: speed * .01,
-          scale: 1 - Math.min(100, Math.abs(speed)) * 0.003
-        })
-      }
-      render()
+    })
+    // console.log(slider)
 }
