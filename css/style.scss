@@ -1,4 +1,5 @@
 /* Option 2: Import via CSS */
+@use "sass:math";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 @import "../scss/reset";
 @import "../scss/base";
@@ -109,13 +110,13 @@
             }
         }
         .block-header__header-content{
-            @include padding(0px, 0px, $padding-x*2, $padding-x*2);
+            @include padding(0px, 0px, $paddingX*2, $paddingX*2);
             @include color(white);
             position: absolute;
             top: 100px;
             .coll-half{
                 &:nth-child(2n+1){
-                    @include padding(0px, 0px, $padding-x, $padding-x);
+                    @include padding(0px, 0px, $paddingX, $paddingX);
                 }
                 .content-heading{
                     @include font-size(50px);
@@ -142,8 +143,8 @@
     .block__block-main-content{
         // about us
         .block-main-content__about-us{
-            @include padding(0px, 0px, $padding-x*2, $padding-x*2);
-            @include margin($margin-y,0,0,0);
+            @include padding(0px, 0px, $paddingX*2, $paddingX*2);
+            @include margin($marginY,0,0,0);
             .c-1{
                 position: relative;
                 .content-heading{
@@ -196,13 +197,13 @@
                         }
                     }
                 }
-            }  
+            }
         }
         // send box
         .block-main-content__send-box{
-            @include margin($margin-y, 0px, 0px, 0px);
+            @include margin($marginY, 0px, 0px, 0px);
             .newsletter{
-                @include padding(0px, 0px, $padding-x*2, $padding-x*2);
+                @include padding(0px, 0px, $paddingX*2, $paddingX*2);
                 position: relative;
                 .coll--left{
                     .txt-white{
@@ -229,7 +230,7 @@
                     }
                 }
                 .coll--right{ 
-                    margin-left: $margin-y/2;
+                    margin-left: math.div($marginY,2);
                     img{
                         @include size(100%, 100%);
                         object-fit: contain
@@ -275,6 +276,12 @@
                             }
                         }
                     }
+                    :hover{
+                        color: white;
+                    }
+                }
+                .service-item.notActive{
+                    display: none;
                 }
             }
         }
@@ -325,30 +332,38 @@
         }
         // TESTIMONIAL SLIDES
         .block-main-content__feedback{
-            @include padding($padding-x*2, $padding-x*2, $padding-x/2, $padding-x/2);
+            @include padding($paddingX*2, $paddingX*2, math.div($paddingX,2), math.div($paddingX,2));
             position: relative;
-            overflow-x: hidden;
+            // position: absolute;
+            overflow: hidden;
             .feedback-banner{
-                // @include padding($padding-x*2, $padding-x*2, $padding-x*2, $padding-x*2);
-                position: relative;
+                @include size(fit-content, auto);
+                @include absolute(0px, 0px);
                 flex-wrap: nowrap;
+                scroll-behavior: smooth;
+                // pointer-events: none;
+                transition: 1s ease-in-out;
                 &:hover{
                     animation-play-state: paused;
                 }
                 .grid-item{
+                    @include size(393px, fit-content);
                     margin-top: 0px;
                     padding: 10px;
+                    // pointer-events:none;
+                    cursor: grab;
+
                     .m-row{
                         @include border(1px, solid, white, unset, 10px);
                         .quote{
-                            @include font(70px, 600, white);
+                            @include font(1.5em, 600, white);
                             @include size(100%, fit-content);
-                            margin-bottom: $margin-y/3;
+                            margin-bottom: math.div($marginY,3);
                         }
                         .fbTxt{
-                            @include font(20px, 300, white);
+                            @include font(1em, 300, white);
                             @include flex(center, center);
-                            margin-bottom: $margin-y/3;
+                            margin-bottom: math.div($marginY,3);
                         }
                         .s-row.block-flex{
                             @include size(100%, auto);
@@ -363,10 +378,10 @@
                                 }
                                 .client-info{
                                     &__name{
-                                        @include font(30px, 400, white);
+                                        @include font(1.5em, 400, white);
                                     }
                                     &__position{
-                                        @include font(20px, 400, white);
+                                        @include font(1em, 400, white);
                                     }
                                 }
                         }
@@ -396,19 +411,20 @@
         }
         // team
         .block-main-content__our-team{
+            // margin-top: 500px;
             .grid-list{
                 .grid-item{
-                    @include size(calc(100%/3), 550px);
+                    @include size(calc(100%/3), 570px);
                     position: relative;
                     cursor: pointer;
                     .m-row{
-                        @include size(90%, 450px);
+                        @include size(90%, 460px);
                         position: absolute;
                         top: 50px;
                         background-color: white;
                         z-index: 0;
                         .buttons-group{
-                            @include size(fit-content, 95%);
+                            @include size(fit-content, 90%);
                             .button--social{
                                 @include size( 40px, 40px);
                                 @include flex(center, center);
@@ -418,7 +434,7 @@
                         }
                         transition: all 1.4s ease;
                     }
-                   img{
+                    img{
                         @include size(95%, auto);
                         position: absolute;
                         top: 0px;
@@ -453,14 +469,14 @@
     }
     .block__block-footer{
         @include font(1em, 500, white);
-        @include padding($padding-x*2, 0px, $padding-x/2, $padding-x/2);
-        @include margin($margin-y,0,0,0);
+        @include padding($paddingX*2, 0px, math.div($paddingX,2), math.div($paddingX,2));
+        @include margin($marginY,0,0,0);
         .row-fluid{
-            @include padding($padding-x*2, $padding-x*2, $padding-x*2, $padding-x*2);
+            @include padding($paddingX*2, $paddingX*2, $paddingX*2, $paddingX*2);
             &:nth-child(2n+1){
                 .coll-item{
                     @include margin(0, 1.5em, 0, 0);
-                    @include padding(0, 0, $padding-x/2, $padding-x/2);
+                    @include padding(0, 0, math.div($paddingX,2), math.div($paddingX,2));
                     .s-row{
                         @include flex(center, flex-start);
                         @include margin(0, 1em, 0, 0);
@@ -476,7 +492,7 @@
                             }
                         }
                         .coll-10{
-                            margin-right: $margin-y/3;
+                            margin-right: math.div($marginY,3);
                         }
                         i{
                             @include color($light);
@@ -488,7 +504,7 @@
                             flex-wrap: wrap;
                             .s-row{
                                 @include size(calc(100%/3 - 12px), 100%);
-                                @include margin($padding-x/3, 0, 0, $padding-x/2);
+                                @include margin(math.div($paddingX,3), 0, 0, math.div($paddingX,2));
                                 position: relative;
                                 img{
                                     @include size(100%, 100%);
@@ -562,11 +578,11 @@
     &--related-page{
         .block__header-section{
             .block-header__header-content{
-                @include padding($padding-x*2, $padding-x*2, 0, 0);
+                @include padding($paddingX*2, $paddingX*2, 0, 0);
                 text-align: center;
                 .padding-lr{
-                    @include margin($margin-y,0,0,0);
-                    @include padding(0, 0, $padding-x, $padding-x);
+                    @include margin($marginY,0,0,0);
+                    @include padding(0, 0, $paddingX, $paddingX);
                     h1{
                         @include font(2.5em, 700, $light);
                         @include margin(8px, 0,0,0);
@@ -584,7 +600,7 @@
                         &__item{
                             a{
                                 @include font(1.2em, 300, $light);
-                                @include padding(0, 0, $padding-x/3, $padding-x/3);
+                                @include padding(0, 0, math.div($paddingX,3), math.div($paddingX,3));
                             }
                             &:nth-child(2n+2){
                                 display: flex;
@@ -606,12 +622,12 @@
         .block__block-main-content{
            .block-main-content__contact{
                form{
-                   @include margin($margin-y/3,0,0,0);
+                   @include margin(math.div($marginY,3),0,0,0);
                         .form-block{
                             padding: 0 15%;
                             .row-fluid{
                                 @include flex(center, center);
-                                @include margin($margin-y/3, 0, 0, 0);
+                                @include margin(math.div($marginY,3), 0, 0, 0);
                                 @include padding(0, 0, 8px,8px);
                                 input,
                                 textarea{
@@ -665,7 +681,7 @@
             .block-main-content__about-us{
                 .c-1{
                     @include size(50%, 300px);
-                    @include margin(0px, 0px, 0px, $margin-y);
+                    @include margin(0px, 0px, 0px, $marginY);
                 }
                 .c-2{
                     width: 50%;position: relative;
@@ -676,14 +692,14 @@
             }
             // send box
             .block-main-content__send-box{
-                margin-top: $margin-y;
+                margin-top: $marginY;
                 height: 500px;
                 .newsletter{
                     height: 400px;
                     .coll--left{
                         .txt-white,
                         .row-fluid{
-                            @include margin($margin-y, $margin-y, 0, 0);
+                            @include margin($marginY, $marginY, 0, 0);
                         }
                         
                     }
@@ -727,7 +743,7 @@
             // feedback
             // .block-main-content__feedback{
             //     .feedback-banner{
-            //         @include padding($padding-x*2, $padding-x*2, $padding-x*2, $padding-x*2);
+            //         @include padding($paddingX*2, $paddingX*2, $paddingX*2, $paddingX*2);
             //         .grid-item{
             //             &.is-draging{
             //                 cursor: grabbing
@@ -799,7 +815,7 @@
                         @include flex(center, center);
                     }
                     &:nth-child(2n+2){
-                        @include margin($margin-y, 0, 0, 0);
+                        @include margin($marginY, 0, 0, 0);
                         @include flex(center, center);
                     }
                 }
@@ -920,7 +936,7 @@
                 .coll--left{
                     width: 100%;
                     div{
-                        margin: $padding-x 0px;
+                        margin: $paddingX 0px;
                     }
                 }
                 .coll--right{
@@ -943,7 +959,7 @@
                     .grid-item{
                         width: 100%;
                         &:nth-child(3n+2){
-                            margin:  $margin-y/2 0px;
+                            margin:  math.div($marginY,2) 0px;
                         }
                     }
                 }

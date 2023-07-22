@@ -23,8 +23,8 @@ $(document).ready(function () {
                 // gsap.fromTo(".grid-item", {opacity: 0, scale: 0}, {opacity:1, scale:1, duration: 1.5});
             
             // ---- Abous Us --- //
-                gsap.fromTo(".block-main-content__about-us .coll--left", {y:150}, {y:0, duration: 1});
-                gsap.fromTo(".block-main-content__about-us .coll--right", {scale:0.3, opacity:0.6}, {scale:1, opacity:1, duration: 1.5});
+                gsap.fromTo(document.querySelector(".c-1"), {y:100}, {y:0, duration: 1});
+                // gsap.fromTo(".block-main-content__about-us .coll--right", {scale:0.3, opacity:0.6}, {scale:1, opacity:1, duration: 1.5});
             // ---- Send Box--- //
             gsap.fromTo(".block-main-content__send-box .newsletter", {y:250}, {y:0, duration: 1.5,});
             
@@ -90,35 +90,116 @@ $(document).ready(function () {
                     $(".button__go-top").css("display", "block");
                 }
             });
+
+    // --------------------------------------------------   Lazy Loading  -------------------------------------------------------------------- //
+    lazyLoadFunction_AboutUs();
+    lazyLoadFunction_SendBox();
+    // lazyLoadFunction_Services();
+    $(".c-1").lazy();
+
     // --------------------------------------------------   Render data    -------------------------------------------------------------------- //
     
-            // render imgs project 
-            $.getJSON("../data/data.json", (data)=>{
-                let htmls = data.projects.map((proj)=>{
-                    return `
-                        <div class="grid-item" data-project = "${proj.project_field}">
-                            <div class="m-row">
-                                <a class="s-row">
-                                    <img src="${proj.img}" alt="">
-                                </a>
+            // render imgs
+            $.ajax({
+                url: "../data/data.json",
+                success: function (data) {
+                    // Projects
+                    let projects = data.projects.map((proj)=>{
+                        return `
+                            <div class="grid-item" data-project = "${proj.project_field}">
+                                <div class="m-row">
+                                    <a class="s-row">
+                                        <img src="${proj.img}" alt=""  loading = "lazy" class="lazy">
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    `
-                })
-                .join("");
-                $(".block-main-content__project .grid-list").html(htmls);
-            });
+                        `
+                    })
+                    .join("");
+                    function lazyLoadFunction_Projects(){
+                        if("IntersectionObserver" in window){
+                            let observe = new IntersectionObserver(entries=>{
+                                entries.forEach(entry=>{
+                                    if(entry.isIntersecting){
+                                        $(".block-main-content__project .grid-list").html(projects);
+                                    }
+                                    else{
+                                        // $(".block-main-content__project .grid-list").empty();
+                                    }
+                                })
+                            })
+                            observe.observe(document.querySelector(".block-main-content__project .grid-list"));
+                        }
+                    }
+                    lazyLoadFunction_Projects();
+                    // Teams
+                    let our_team = data.teams.map(team=>{
+                        return `
+                            <div class="grid-item">
+                                <div class="m-row">
+                                    <div class="buttons-group">
+                                        <div class="button__facebook button--social">
+                                            <i class="bi bi-facebook"></i>
+                                        </div>
+                                        <div class="button__instagram button--social">
+                                            <i class="bi bi-instagram"></i>
+                                        </div>
+                                        <div class="button__twister button--social">
+                                            <i class="bi bi-linkedin"></i>
+                                        </div>
+                                    </div>
+                                    <div class="member-info">
+                                        <div class="member-info__member-name">
+                                            <h2>${team.team_members_name}</h2>
+                                        </div>
+                                        <div class="member-info__member-job-title">${team.job_title}</div>
+                                    </div>
+                                </div>
+                                <img src="${team.url}" alt="" loading= "lazy" class="lazy">
+                            </div>
+                        `
+                    }).join("");
+                    function lazyLoadFunction_OurTeam(){
+                        if("IntersectionObserver" in window){
+                            let observe = new IntersectionObserver(entries=>{
+                                entries.forEach(entry=>{
+                                    if(entry.isIntersecting){
+                                        $(".block-main-content__our-team .grid-list").html(our_team);
+                                    }
+                                    else{
+                                        $(".block-main-content__our-team .grid-list").empty();
+                                    }
+                                })
+                            })
+                            observe.observe(document.querySelector(".block-main-content__our-team"));
+                        }
+                    }
+                    lazyLoadFunction_OurTeam();
+            }});
+           
             // img galery in footer
             $.getJSON("../data/data.json", (data)=>{
                 let htmls = data.projects.map((proj)=>{
                     return `
                         <a class="s-row" data-project = "${proj.project_field}">
-                            <img src="${proj.img}" alt="" style="object-fit: contain;">
+                            <img src="${proj.img}" alt="" style="object-fit: contain;" loading="lazy">
                         </a>
                     `
                 })
                 .join("");
-                $(".block__block-footer .project-gallery .gallery-list").html(htmls);
+                function lazyLoadFunction_FooterGallery(){
+                    if("IntersectionObserver" in window){
+                        let observe = new IntersectionObserver(entries=>{
+                            entries.forEach(entry=>{
+                                if(entry.isIntersecting){
+                                    $(".block__block-footer .project-gallery .gallery-list").html(htmls);
+                                }
+                            })
+                        })
+                        observe.observe(document.querySelector(".block__block-footer .project-gallery"));
+                    }
+                }
+                lazyLoadFunction_FooterGallery();
             });
             // testimonial slide
             $.getJSON("../data/data.json", (data)=>{
@@ -130,23 +211,61 @@ $(document).ready(function () {
                                     <div class="s-row fbTxt">${fdb.feedbackDescription}</div>
                                     <div class="s-row block-flex">
                                         <div class="avatar">
-                                            <img src="${fdb.feedbackUserInfo.avatar}" alt="" srcset="">
+                                            <img src="${fdb.feedbackUserInfo.avatar}" alt="${fdb.feedbackUserInfo}" srcset="" loading = "lazy">
                                         </div>
-                                        <di class="client-info">
+                                        <div class="client-info">
                                             <div class="client-info__name">${fdb.feedbackUserInfo.name}</div>
                                             <div class="client-info__position">${fdb.feedbackUserInfo.profession}</div>
-                                        </di>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
                         `
                 })
                 .join("");
-                $(".block-main-content__feedback .feedback-banner").html(htmls);
-                $(".block-main-content__feedback .feedback-banner .grid-item").eq(0).addClass("active");
-                dragDropSlide();
-            });
+                function lazyLoadFunction_Testimonial(){
+                    if("IntersectionObserver" in window){
+                        let observe = new IntersectionObserver(entries=>{
+                            entries.forEach(entry=>{
+                                if(entry.isIntersecting){
+                                    // Display "grid-item"
+                                    $(".block-main-content__feedback .feedback-banner").html(htmls);
+                                    $(".block-main-content__feedback .feedback-banner .grid-item").eq(0).addClass("active");
+                                    const items = document.querySelectorAll(".block-main-content__feedback .feedback-banner .grid-item");
+                                    const fdb = $(".block-main-content__feedback .feedback-banner");
+                                    const origX_postion = $(fdb).offset().left;
+                                    let currActive = 0; 
+                                    // console.log($(fdb).offset().left+ $(fdb).width())
+                                    setInterval(() => {
+                                        // Auto toggle class "active"
+                                        $(items).each(function(){
+                                            $(this).removeClass("active");
+                                        })
+                                        currActive++;
+                                        if(currActive>$(items).length){
+                                            currActive = 1;
+                                        }
+                                        $(items).eq(currActive-1).addClass("active");
+                                        // Auto show
+                                        let x =  $(items).width()*(currActive-1) - origX_postion*(currActive-1) - origX_postion;
+                                        if(x > 621){
+                                            x = 665.5;
+                                        }
+                                        
+                                        $(fdb).offset({left: -x});
+                                        // console.log(x,$(fdb).offset().left)
+                                    }, 2000);
+                                }
+                            })
+                        })
+                        observe.observe(document.querySelector(".block-main-content__feedback .feedback-banner"));
+                    }
+                }
+                // $(".block-main-content__feedback .feedback-banner .grid-item").eq(0).addClass("active");
 
+                lazyLoadFunction_Testimonial();
+                draggableSlide();
+            });
     // --------------------------------------------------   Responsive and Scrolling   -------------------------------------------------------------------- //
     
     if(window.innerWidth >= 1240){
@@ -194,10 +313,11 @@ $(document).ready(function () {
     // --------------------------------------------------   Handle Event    -------------------------------------------------------------------- // 
     // --------------------   Filter    -------------------- //  
     filter_project($(".project-filter div"));
+
 })
 // variables
 
-// function
+// -----------------------------  function ---------------------------------------//
 // ---- Filter Function ----- //
 function filter_project(btns){
     $(btns).each(function(btn){
@@ -231,18 +351,97 @@ function filter_project(btns){
     
 }
 // handle Testimonial slides.
-function dragDropSlide(){
+function draggableSlide(){
     let isDraggable = false;
-    let  x, scollX;
-    const sliderWrapper = $(".block-main-content__feedback .feedback-banner");
-    $(sliderWrapper).mouseenter(function(){
+    let  x, scrollX;
+    const feedbackContainer = $(".block-main-content__feedback");
+    const feedbackBanner = $(".block-main-content__feedback .feedback-banner");
+    $(feedbackBanner).mousedown(function (e) { 
+        $(this).css("cursor", "grabbing")
+        isDraggable = true;
+        x = e.pageX - $(feedbackBanner).offset().left;
+        // checkBounding()
+    });
+    $(feedbackBanner).mouseup(function () { 
+        isDraggable = false;
         $(this).css("cursor", "grab");
-    })
-    $(sliderWrapper).mousemove(function(e){
+        checkBounding()
+
+    });
+    $(feedbackBanner).mousemove(function (e) { 
         if(!isDraggable) return;
         e.preventDefault();
-        x = e.offsetX;
-
-    })
-    // console.log(slider)
+        scrollX = e.pageX - x;
+        $(feedbackBanner).offset({left: scrollX});
+        // checkBounding()
+    });
+    function checkBounding(){
+        const containerRect = $(feedbackContainer).offset();
+        const feedbackRect = $(feedbackBanner).offset();
+        if(parseInt($(feedbackBanner).offset().left) > 124.5){
+            $(feedbackBanner).offset({left: -124.5})
+        }
+        if(parseInt($(feedbackBanner).offset().left) < -551){
+            $(feedbackBanner).offset({left: -660})
+        }
+    }
 }
+
+// --------------------------------------------------   Lazy Loading  -------------------------------------------------------------------- //
+function loading(img, url){
+    // const aboutUs_imgURL = $('[about-us_src]').attr("about-us_src");
+    $(img).attr("src", url);
+    $(img).removeAttr(url);
+}
+let lazyLoadFunction_AboutUs = function(){
+    if("IntersectionObserver" in window){
+        var observer = new IntersectionObserver(entries=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    loading(document.querySelector(".block-main-content__about-us img"), $('[about-us_src]').attr("about-us_src"));
+                    gsap.fromTo(".block-main-content__about-us .coll--right", {scale:0.3, opacity:0.6}, {scale:1, opacity:1, duration: 1.5});
+                }
+                else{
+                }
+            })
+        },{
+            // threshold: 0.85
+        })
+        observer.observe(document.querySelector(".block-main-content__about-us"))
+    }
+}
+
+let lazyLoadFunction_SendBox = function(){
+    if("IntersectionObserver" in window){
+        var observer = new IntersectionObserver(entries=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    loading(entry.target, $('[send-box_src]').attr("send-box_src"));
+                }
+                else{
+                }
+            })
+        },{
+            // threshold: 0.85
+        })
+        observer.observe(document.querySelector(".block-main-content__send-box img"))
+    }
+}
+function lazyLoadFunction_Services(){
+    if("IntersectionObserver" in window){
+        let observe = new IntersectionObserver(entries=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    entry.target.classList.remove("notActive");
+                }
+                else{
+                    entry.target.classList.add("notActive");
+                }
+            })
+        })
+        document.querySelectorAll(".service-item").forEach(serviceItem=>{
+            observe.observe(serviceItem);
+        })
+    }
+}
+

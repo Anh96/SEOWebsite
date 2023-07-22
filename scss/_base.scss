@@ -2,8 +2,9 @@ $primary: #2124B1;
 $secondary: #4777F5;
 $light: #F7FAFF;
 $dark: hsl(240, 15%, 13%);
-$padding-x: 24px;
-$margin-y: 48px;
+$paddingX: 24px;
+$marginY: 48px;
+@use "sass:math";
 @import "../scss/mixins";
 body{
     background-color: $light;
@@ -34,13 +35,13 @@ a{
     @include size(10%, auto);
 }
 .block-flex{
-    @include flex__center-items(center, -content)
+    @include flex(center, inherit);
 }
 .txt-white{
     @include font(auto, auto, white);
 }
 .margin-48{
-    margin-top: $margin-y;
+    margin-top: $marginY;
 }
 .button{
     @include font(1rem, 500, white);
@@ -53,7 +54,7 @@ a{
     @include size(100%, auto);
     div,
     h1{
-        @include flex__center-items(center, center);
+        @include flex(center, center);
     }
     div{
         @include font(20px, 300, $primary);
@@ -75,16 +76,16 @@ a{
 }
 .grid{
     @include size(100%, auto);
-    @include margin($margin-y, 0px, 0px, 0px);
-    @include padding(0px, 0px, $padding-x*2,  $padding-x*2);
+    @include margin($marginY, 0px, 0px, 0px);
+    @include padding(0px, 0px, $paddingX*2,  $paddingX*2);
     .grid-list{
-        @include flex__center-items(center, -content);
+        @include flex(center, unset);
         flex-direction: row;
         flex-wrap: wrap;
         .grid-item{
             @include size(calc(100%/3), 350px);
-            @include padding(0, 0, $padding-x/2, $padding-x/2);
-            @include margin($margin-y/2, 0, 0, 0);
+            @include padding(0, 0, math.div($paddingX, 2), math.div($paddingX, 2));
+            @include margin(math.div($marginY,2), 0, 0, 0);
             position: relative;;
             .m-row{
                 @include padding(30px, 30px, 25px, 25px);

@@ -32,7 +32,7 @@
           "feedbackDescription": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
           "feedbackUserInfo": {
             "name" : "Miley Happy",
-            "profession" : "designer",
+            "profession" : "Designer",
             "avatar" : "../imgs/testimonial-1.jpg"
           }
         },
@@ -55,6 +55,43 @@
             "avatar" : "../imgs/testimonial-3.jpg"
 
           }
+        },
+        { 
+          "feedbackKey": 4,
+          "feedbackDescription": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+          "feedbackUserInfo": {
+            "name" : "Odem Haris",
+            "profession" : "CMO",
+            "avatar" : "../imgs/testimonial-4.jpg"
+
+          }
+        },
+        { 
+          "feedbackKey": 5,
+          "feedbackDescription": "Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+          "feedbackUserInfo": {
+            "name" : "Odem Haris",
+            "profession" : "CMO",
+            "avatar" : "../imgs/testimonial-4.jpg"
+
+          }
         }
+    ],
+    "teams": [
+      {
+        "url": "../imgs/team-1.jpg",
+        "team_members_name": "Jonhny Dow",
+        "job_title": "Manager"
+      },
+      {
+        "url": "../imgs/team-2.jpg",
+        "team_members_name": "Emma Dior",
+        "job_title": "CEO"
+      },
+      {
+        "url": "../imgs/team-3.jpg",
+        "team_members_name": "Jackie",
+        "job_title": "Designer"
+      }
     ]
   }
